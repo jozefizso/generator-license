@@ -3,7 +3,14 @@
 
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
+var _s      = require('underscore.string');
 
+
+function makeRegExp() {
+  var message = _s.sprintf.apply(this, arguments);
+  var escaped = message.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  return new RegExp(escaped);
+}
 
 describe('license generator', function () {
   beforeEach(function (done) {
@@ -19,20 +26,80 @@ describe('license generator', function () {
     }.bind(this));
   });
 
-  it('creates expected files', function (done) {
-    var expected = [
-      // add files you expect to exist here.
-      '.jshintrc',
-      '.editorconfig'
-    ];
+  it('creates expected files - Apache license', function (done) {
 
     helpers.mockPrompt(this.app, {
-      'someOption': 'Y'
+      'name': 'Test User',
+      'license': 'apache'
     });
-    this.app.options['skip-install'] = true;
+
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
+      var regex = makeRegExp("Copyright %d Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', regex);
+      helpers.assertFile('LICENSE', /Apache License, Version 2\.0/);
       done();
     });
+
+  });
+
+  it('creates expected files - FreeBSD license', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'freebsd'
+    });
+
+    this.app.run({}, function () {
+      var regex = makeRegExp("Copyright (c) %d, Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', regex);
+      helpers.assertFile('LICENSE', /FreeBSD Project/);
+      done();
+    });
+
+  });
+
+  it('creates expected files - NewBSD license', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'newbsd'
+    });
+
+    this.app.run({}, function () {
+      var regex = makeRegExp("Copyright (c) %d, Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', regex);
+      done();
+    });
+
+  });
+
+  it('creates expected files - MIT license', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'mit'
+    });
+
+    this.app.run({}, function () {
+      var regex = makeRegExp("Copyright (C) %d Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', regex);
+      done();
+    });
+
+  });
+
+  it('creates expected files - ISC license', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'isc'
+    });
+
+    this.app.run({}, function () {
+      var regex = makeRegExp("Copyright (c) %d Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', regex);
+      done();
+    });
+
   });
 });

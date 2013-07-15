@@ -7,10 +7,6 @@ var yeoman = require('yeoman-generator');
 var LicenseGenerator = module.exports = function LicenseGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
-  this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
-  });
-
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
@@ -19,32 +15,35 @@ util.inherits(LicenseGenerator, yeoman.generators.Base);
 LicenseGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
-  console.log(this.yeoman);
+  var choices = [
+    { name: 'Apache 2.0', value: 'apache' },
+    { name: 'MIT', value: 'mit' },
+    { name: 'FreeBSD', value: 'freebsd' },
+    { name: 'NewBSD', value: 'newbsd' },
+    { name: 'Internet Systems Consortium (ISC)', value: 'isc' }
+  ];
 
-  var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
+  var prompts = [
+      {
+        name: 'name',
+        message: 'Please, enter your name:'
+      },
+      {
+        type: 'list',
+        name: 'license',
+        message: 'Please, select desired license:',
+        choices: choices
+      }
+  ];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    var filename = props.license + '.txt';
 
+    // data for template
+    this.year = (new Date()).getFullYear();
+    this.name = props.name;
+
+    this.template(filename, 'LICENSE');
     cb();
   }.bind(this));
-};
-
-LicenseGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
-
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
-};
-
-LicenseGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
 };
