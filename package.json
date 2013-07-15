@@ -1,0 +1,37 @@
+{
+  "name": "generator-license",
+  "version": "0.0.0",
+  "description": "A generator for Yeoman",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/jozefizso/generator-license",
+  "bugs": "https://github.com/jozefizso/generator-license/issues",
+  "author": {
+    "name": "Jozef Izso",
+    "email": "",
+    "url": "https://github.com/jozefizso"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jozefizso/generator-license.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.12.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.10.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
