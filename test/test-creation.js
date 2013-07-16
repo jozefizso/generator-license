@@ -81,7 +81,8 @@ describe('license generator', function () {
     });
 
     this.app.run({}, function () {
-      var regex = makeRegExp("Copyright (C) %d Test User", new Date().getFullYear());
+      var regex = makeRegExp("Copyright (c) %d Test User", new Date().getFullYear());
+      helpers.assertFile('LICENSE', makeRegExp("The MIT License (MIT)"));
       helpers.assertFile('LICENSE', regex);
       done();
     });
