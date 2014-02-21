@@ -3,12 +3,13 @@
 
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
+var assert  = require('yeoman-generator').assert;
 var _s      = require('underscore.string');
 
 
 function makeRegExp() {
   var message = _s.sprintf.apply(this, arguments);
-  var escaped = message.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  var escaped = _s.escapeRegExp(message);
   return new RegExp(escaped);
 }
 
@@ -35,8 +36,8 @@ describe('license generator', function () {
 
     this.app.run({}, function () {
       var regex = makeRegExp("Copyright %d Test User", new Date().getFullYear());
-      helpers.assertFile('LICENSE', regex);
-      helpers.assertFile('LICENSE', /Apache License, Version 2\.0/);
+      assert.fileContent('LICENSE', regex);
+      assert.fileContent('LICENSE', /Apache License, Version 2\.0/);
       done();
     });
 
@@ -51,8 +52,8 @@ describe('license generator', function () {
 
     this.app.run({}, function () {
       var regex = makeRegExp("Copyright (c) %d, Test User", new Date().getFullYear());
-      helpers.assertFile('LICENSE', regex);
-      helpers.assertFile('LICENSE', /FreeBSD Project/);
+      assert.fileContent('LICENSE', regex);
+      assert.fileContent('LICENSE', /FreeBSD Project/);
       done();
     });
 
@@ -67,7 +68,7 @@ describe('license generator', function () {
 
     this.app.run({}, function () {
       var regex = makeRegExp("Copyright (c) %d, Test User", new Date().getFullYear());
-      helpers.assertFile('LICENSE', regex);
+      assert.fileContent('LICENSE', regex);
       done();
     });
 
@@ -82,8 +83,8 @@ describe('license generator', function () {
 
     this.app.run({}, function () {
       var regex = makeRegExp("Copyright (c) %d Test User", new Date().getFullYear());
-      helpers.assertFile('LICENSE', makeRegExp("The MIT License (MIT)"));
-      helpers.assertFile('LICENSE', regex);
+      assert.fileContent('LICENSE', makeRegExp("The MIT License (MIT)"));
+      assert.fileContent('LICENSE', regex);
       done();
     });
 
@@ -98,7 +99,7 @@ describe('license generator', function () {
 
     this.app.run({}, function () {
       var regex = makeRegExp("Copyright (c) %d Test User", new Date().getFullYear());
-      helpers.assertFile('LICENSE', regex);
+      assert.fileContent('LICENSE', regex);
       done();
     });
 
