@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "License generator for Yeoman based projects.",
   "keywords": [
     "yeoman-generator",
@@ -24,14 +24,14 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.13.4"
+    "yeoman-generator": "~0.16.0"
   },
   "devDependencies": {
-    "mocha": "~1.10.0",
+    "mocha": "~1.17.1",
     "underscore.string": "~2.3.3"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.0"
   },
   "licenses": [
     {
