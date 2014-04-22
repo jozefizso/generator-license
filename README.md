@@ -11,11 +11,17 @@ A license files generator for Yeoman.
 
 ### Supported licenses
 
-* Apache 2 License
-* MIT License
-* FreeBSD License
-* NewBSD License
-* ISC License
+* [Apache 2 License][1]
+* [MIT License][2]
+* [FreeBSD License][3]
+* [NewBSD License][4]
+* [ISC License][5]
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+[1]: http://choosealicense.com/licenses/apache/
+[2]: http://choosealicense.com/licenses/mit/
+[3]: http://choosealicense.com/licenses/bsd/
+[4]: http://choosealicense.com/licenses/bsd-3-clause/
+[5]: http://en.wikipedia.org/wiki/ISC_license
