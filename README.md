@@ -16,6 +16,7 @@ A license files generator for Yeoman.
 * [FreeBSD License][3]
 * [NewBSD License][4]
 * [ISC License][5]
+* [No License][6]
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
@@ -25,3 +26,4 @@ A license files generator for Yeoman.
 [3]: http://choosealicense.com/licenses/bsd/
 [4]: http://choosealicense.com/licenses/bsd-3-clause/
 [5]: http://en.wikipedia.org/wiki/ISC_license
+[6]: http://choosealicense.com/licenses/no-license/

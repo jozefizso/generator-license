@@ -104,4 +104,19 @@ describe('license generator', function () {
     });
 
   });
+
+  it('creates expected files - No License', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'nolicense'
+    });
+
+    this.app.run({}, function () {
+      var regex = makeRegExp("Copyright (c) %d Test User", new Date().getFullYear());
+      assert.fileContent('LICENSE', regex);
+      done();
+    });
+
+  });
 });

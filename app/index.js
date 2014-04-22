@@ -20,7 +20,8 @@ LicenseGenerator.prototype.askFor = function askFor() {
     { name: 'MIT', value: 'mit' },
     { name: 'FreeBSD', value: 'freebsd' },
     { name: 'NewBSD', value: 'newbsd' },
-    { name: 'Internet Systems Consortium (ISC)', value: 'isc' }
+    { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
+    { name: 'No License (Copyrighted)', value: 'nolicense' }
   ];
 
   var prompts = [
