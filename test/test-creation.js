@@ -43,6 +43,23 @@ describe('license generator', function () {
 
   });
 
+  it('creates expected files - unlicense', function (done) {
+
+    helpers.mockPrompt(this.app, {
+      'name': 'Test User',
+      'license': 'unlicense'
+    });
+
+    this.app.run({}, function () {
+      var regex1 = makeRegExp("This is free and unencumbered software released into the public domain.");
+      var regex2 = makeRegExp("http://unlicense.org/");
+      assert.fileContent('LICENSE', regex1);
+      assert.fileContent('LICENSE', regex2);
+      done();
+    });
+
+  });
+
   it('creates expected files - FreeBSD license', function (done) {
 
     helpers.mockPrompt(this.app, {

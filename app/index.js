@@ -18,6 +18,7 @@ LicenseGenerator.prototype.askFor = function askFor() {
   var choices = [
     { name: 'Apache 2.0', value: 'apache' },
     { name: 'MIT', value: 'mit' },
+    { name: 'Unlicense', value: 'unlicense' },
     { name: 'FreeBSD', value: 'freebsd' },
     { name: 'NewBSD', value: 'newbsd' },
     { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
