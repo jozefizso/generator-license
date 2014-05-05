@@ -1,5 +1,6 @@
 # generator-license
 [![Build Status](https://secure.travis-ci.org/jozefizso/generator-license.png?branch=master)](https://travis-ci.org/jozefizso/generator-license)
+[![NPM version](https://badge.fury.io/js/generator-license.png)](https://www.npmjs.org/package/generator-license)
 
 A license files generator for Yeoman.
 
