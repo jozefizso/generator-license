@@ -14,8 +14,9 @@ var LicenseGenerator = module.exports = function LicenseGenerator(args, options,
     // fs.exists is being deprecated
     this.gitc = ini.parse(this.readFileAsString(path.join(this.getUserHome(), '.gitconfig')));
   } catch (e) {
-    this.gitc = {user: {}};
+    this.gitc = {};
   }
+  this.gitc.user = this.gitc.user || {};
 };
 
 util.inherits(LicenseGenerator, yeoman.generators.Base);
