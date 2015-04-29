@@ -1,4 +1,5 @@
 'use strict';
+var ini = require('ini');
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -8,6 +9,14 @@ var LicenseGenerator = module.exports = function LicenseGenerator(args, options,
   yeoman.generators.Base.apply(this, arguments);
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+
+  try {
+    // fs.exists is being deprecated
+    this.gitc = ini.parse(this.readFileAsString(path.join(this.getUserHome(), '.gitconfig')));
+  } catch (e) {
+    this.gitc = {};
+  }
+  this.gitc.user = this.gitc.user || {};
 };
 
 util.inherits(LicenseGenerator, yeoman.generators.Base);
@@ -28,7 +37,17 @@ LicenseGenerator.prototype.askFor = function askFor() {
   var prompts = [
       {
         name: 'name',
-        message: 'Please, enter your name:'
+        message: 'Please, enter your name:',
+        default: this.gitc.user.name
+      },
+      {
+        name: 'email',
+        message: 'Please, enter your email:',
+        default: this.gitc.user.email
+      },
+      {
+        name: 'website',
+        message: 'Please, enter your website address (optional):'
       },
       {
         type: 'list',
@@ -43,9 +62,20 @@ LicenseGenerator.prototype.askFor = function askFor() {
 
     // data for template
     this.year = (new Date()).getFullYear();
-    this.name = props.name;
+    this.author = props.name;
+    if (props.email) {
+      this.author += ' <' + props.email + '>';
+    }
+    if (props.website) {
+      this.author += ' (' + props.website + ')';
+    }
+    this.author = this.author.trim();
 
     this.template(filename, 'LICENSE');
     cb();
   }.bind(this));
+};
+
+LicenseGenerator.prototype.getUserHome = function getUserHome() {
+  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 };

@@ -1,1 +1,1 @@
-Copyright (c) <%= year %> <%= name %>
+Copyright (c) <%= year %> <%= author %>
