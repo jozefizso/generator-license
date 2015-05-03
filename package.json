@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "description": "License generator for Yeoman based projects.",
   "keywords": [
     "yeoman-generator",
@@ -15,6 +15,7 @@
     "url": "https://github.com/jozefizso"
   },
   "repository": "jozefizso/generator-license",
+  "main": "app/index.js",
   "scripts": {
     "test": "mocha -R spec"
   },
@@ -25,7 +26,8 @@
   },
   "devDependencies": {
     "mocha": "^2.2.4",
-    "yeoman-assert": "^2.0.0"
+    "yeoman-assert": "^2.0.0",
+    "underscore.string": "~2.3.3"
   },
   "licenses": "MIT"
 }

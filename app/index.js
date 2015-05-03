@@ -42,30 +42,34 @@ module.exports = generators.Base.extend({
     ];
 
     var prompts = [
-        {
-          name: 'name',
-          message: 'What\'s your name:',
-          default: this.options.name || this.gitc.user.name,
-          when: !this.options.name
-        },
-        {
-          name: 'email',
-          message: 'Your email (optional):',
-          default: this.options.email || this.gitc.user.email,
-          when: !this.options.email
-        },
-        {
-          name: 'website',
-          message: 'Your website (optional):',
-          default: this.options.website,
-          when: !this.options.website
-        },
-        {
-          type: 'list',
-          name: 'license',
-          message: 'Which license do you want to use?',
-          choices: choices
-        }
+      {
+        name: 'name',
+        message: 'What\'s your name:',
+        default: this.options.name || this.gitc.user.name,
+        when: !this.options.name
+      },
+      {
+        name: 'email',
+        message: 'Your email (optional):',
+        default: this.options.email || this.gitc.user.email,
+        when: !this.options.email
+      },
+      {
+        name: 'website',
+        message: 'Your website (optional):',
+        default: this.options.website,
+        when: !this.options.website
+      },
+      {
+        type: 'list',
+        name: 'license',
+        message: 'Which license do you want to use?',
+        choices: choices
+      },
+      {
+        name: 'year',
+        default: (new Date()).getFullYear()
+      }
     ];
 
     this.prompt(prompts, function (props) {
@@ -84,12 +88,13 @@ module.exports = generators.Base.extend({
       if (this.props.website) {
         author += ' (' + this.props.website.trim() + ')';
       }
+      var year = this.props.year;
 
       this.fs.copyTpl(
         this.templatePath(filename),
         this.destinationPath('LICENSE'),
         {
-          year: (new Date()).getFullYear(),
+          year: year,
           author: author
         }
       );

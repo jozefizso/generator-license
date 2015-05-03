@@ -1,3 +1,4 @@
+/*global describe, before, it*/
 'use strict';
 var path = require('path');
 var assert = require('yeoman-assert');
@@ -16,9 +17,10 @@ describe('license:app', function () {
   });
 
   it('creates LICENSE file', function () {
-    assert.fileContent('LICENSE', 'MIT');
-    assert.fileContent('LICENSE', 'Rick <foo@example.com> (http://example.com)');
-    assert.fileContent('package.json', '"license": "MIT"');
+    assert.file('LICENSE');
+  });
+  it('creates package.json file', function () {
+    assert.file('package.json');
   });
 });
 
