@@ -15,6 +15,7 @@
     "url": "https://github.com/jozefizso"
   },
   "repository": "jozefizso/generator-license",
+  "main": "app/index.js",
   "scripts": {
     "test": "mocha -R spec"
   },
