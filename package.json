@@ -12,31 +12,20 @@
   "bugs": "https://github.com/jozefizso/generator-license/issues",
   "author": {
     "name": "Jozef Izso",
-    "email": "",
     "url": "https://github.com/jozefizso"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jozefizso/generator-license.git"
-  },
-  "main": "app/index.js",
+  "repository": "jozefizso/generator-license",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "dependencies": {
-    "ini": "^1.3.3",
-    "yeoman-generator": "~0.16.0"
+    "git-config": "0.0.6",
+    "lodash": "^3.8.0",
+    "yeoman-generator": "^0.19.2"
   },
   "devDependencies": {
-    "mocha": "~1.17.1",
-    "underscore.string": "~2.3.3"
+    "mocha": "^2.2.4",
+    "yeoman-assert": "^2.0.0"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+  "licenses": "MIT"
 }
