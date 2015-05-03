@@ -26,8 +26,7 @@
   },
   "devDependencies": {
     "mocha": "^2.2.4",
-    "yeoman-assert": "^2.0.0",
-    "underscore.string": "~2.3.3"
+    "yeoman-assert": "^2.0.0"
   },
   "licenses": "MIT"
 }

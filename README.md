@@ -1,8 +1,15 @@
 # generator-license
-[![Build Status](https://secure.travis-ci.org/jozefizso/generator-license.png?branch=master)](https://travis-ci.org/jozefizso/generator-license)
-[![NPM version](https://badge.fury.io/js/generator-license.png)](https://www.npmjs.org/package/generator-license)
+[![Build Status](https://img.shields.io/travis/jozefizso/generator-license.svg)](https://travis-ci.org/jozefizso/generator-license)
+[![NPM version](https://img.shields.io/npm/v/generator-license.svg)](https://www.npmjs.org/package/generator-license)
+[![David Dependencies](https://img.shields.io/david/jozefizso/generator-license.svg)](https://david-dm.org/jozefizso/generator-license)
+[![David Dev Dependencies](https://img.shields.io/david/dev/jozefizso/generator-license.svg)](https://david-dm.org/jozefizso/generator-license#info=devDependencies)
 
-A license files generator for Yeoman.
+> Generate LICENSE file for your project using Yeoman.
+
+```
+yo license
+```
+
 
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
@@ -18,6 +25,7 @@ A license files generator for Yeoman.
 * [NewBSD License][4]
 * [ISC License][5]
 * [No License][6]
+* [Unlicense][7]
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
@@ -28,3 +36,4 @@ A license files generator for Yeoman.
 [4]: http://choosealicense.com/licenses/bsd-3-clause/
 [5]: http://en.wikipedia.org/wiki/ISC_license
 [6]: http://choosealicense.com/licenses/no-license/
+[7]: http://unlicense.org/
