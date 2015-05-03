@@ -32,12 +32,12 @@ module.exports = generators.Base.extend({
     var done = this.async();
 
     var choices = [
-      { name: 'Apache 2.0', value: 'apache' },
-      { name: 'MIT', value: 'mit' },
-      { name: 'Unlicense', value: 'unlicense' },
-      { name: 'FreeBSD', value: 'freebsd' },
-      { name: 'NewBSD', value: 'newbsd' },
-      { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
+      { name: 'Apache 2.0', value: 'Apache-2.0' },
+      { name: 'MIT', value: 'MIT' },
+      { name: 'Unlicense', value: 'Unlicense' },
+      { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
+      { name: 'NewBSD', value: 'BSD-3-Clause' },
+      { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
       { name: 'No License (Copyrighted)', value: 'nolicense' }
     ];
 
@@ -74,23 +74,39 @@ module.exports = generators.Base.extend({
     }.bind(this));
   },
 
-  writing: function () {
-    var filename = this.props.license + '.txt';
-    var author = this.props.name.trim();
-    if (this.props.email) {
-      author += ' <' + this.props.email.trim() + '>';
-    }
-    if (this.props.website) {
-      author += ' (' + this.props.website.trim() + ')';
-    }
-
-    this.fs.copyTpl(
-      this.templatePath(filename),
-      this.destinationPath('LICENSE'),
-      {
-        year: (new Date()).getFullYear(),
-        author: author
+  writing: {
+    license: function () {
+      var filename = this.props.license + '.txt';
+      var author = this.props.name.trim();
+      if (this.props.email) {
+        author += ' <' + this.props.email.trim() + '>';
       }
-    );
+      if (this.props.website) {
+        author += ' (' + this.props.website.trim() + ')';
+      }
+
+      this.fs.copyTpl(
+        this.templatePath(filename),
+        this.destinationPath('LICENSE'),
+        {
+          year: (new Date()).getFullYear(),
+          author: author
+        }
+      );
+    },
+
+    pkg: function () {
+      var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      pkg.license = this.props.license;
+
+      // We don't want users to publish their module to NPM if they copyrighted
+      // their content.
+      if (this.props.license === 'nolicense') {
+        delete pkg.license;
+        pkg.private = true;
+      }
+
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    }
   }
 });
