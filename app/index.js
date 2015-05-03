@@ -1,81 +1,96 @@
 'use strict';
-var ini = require('ini');
-var util = require('util');
-var path = require('path');
-var yeoman = require('yeoman-generator');
+var _ = require('lodash');
+var generators = require('yeoman-generator');
+var gitConfig = require('git-config');
 
+module.exports = generators.Base.extend({
+  constructor: function () {
+    generators.Base.apply(this, arguments);
 
-var LicenseGenerator = module.exports = function LicenseGenerator(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
+    this.option('name', {
+      description: 'Name of the license owner',
+      required: false
+    });
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+    this.option('email', {
+      description: 'Email of the license owner',
+      required: false
+    });
 
-  try {
-    // fs.exists is being deprecated
-    this.gitc = ini.parse(this.readFileAsString(path.join(this.getUserHome(), '.gitconfig')));
-  } catch (e) {
-    this.gitc = {};
-  }
-  this.gitc.user = this.gitc.user || {};
-};
+    this.option('website', {
+      description: 'Website of the license owner',
+      required: false
+    });
+  },
 
-util.inherits(LicenseGenerator, yeoman.generators.Base);
+  initializing: function () {
+    this.gitc = gitConfig.sync();
+    this.gitc.user = this.gitc.user || {};
+  },
 
-LicenseGenerator.prototype.askFor = function askFor() {
-  var cb = this.async();
+  prompting: function () {
+    var done = this.async();
 
-  var choices = [
-    { name: 'Apache 2.0', value: 'apache' },
-    { name: 'MIT', value: 'mit' },
-    { name: 'Unlicense', value: 'unlicense' },
-    { name: 'FreeBSD', value: 'freebsd' },
-    { name: 'NewBSD', value: 'newbsd' },
-    { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
-    { name: 'No License (Copyrighted)', value: 'nolicense' }
-  ];
+    var choices = [
+      { name: 'Apache 2.0', value: 'apache' },
+      { name: 'MIT', value: 'mit' },
+      { name: 'Unlicense', value: 'unlicense' },
+      { name: 'FreeBSD', value: 'freebsd' },
+      { name: 'NewBSD', value: 'newbsd' },
+      { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
+      { name: 'No License (Copyrighted)', value: 'nolicense' }
+    ];
 
-  var prompts = [
+    var prompts = [
+        {
+          name: 'name',
+          message: 'What\'s your name:',
+          default: this.options.name || this.gitc.user.name,
+          when: !this.options.name
+        },
+        {
+          name: 'email',
+          message: 'Your email (optional):',
+          default: this.options.email || this.gitc.user.email,
+          when: !this.options.email
+        },
+        {
+          name: 'website',
+          message: 'Your website (optional):',
+          default: this.options.website,
+          when: !this.options.website
+        },
+        {
+          type: 'list',
+          name: 'license',
+          message: 'Which license do you want to use?',
+          choices: choices
+        }
+    ];
+
+    this.prompt(prompts, function (props) {
+      this.props = props;
+      done();
+    }.bind(this));
+  },
+
+  writing: function () {
+    var filename = this.props.license + '.txt';
+    var author = this.props.name.trim();
+    if (this.props.email) {
+      author += ' <' + this.props.email.trim() + '>';
+    }
+    if (this.props.website) {
+      author += ' (' + this.props.website.trim() + ')';
+    }
+
+    this.fs.copyTpl(
+      this.templatePath(filename),
+      this.destinationPath('LICENSE'),
       {
-        name: 'name',
-        message: 'Please, enter your name:',
-        default: this.gitc.user.name
-      },
-      {
-        name: 'email',
-        message: 'Please, enter your email:',
-        default: this.gitc.user.email
-      },
-      {
-        name: 'website',
-        message: 'Please, enter your website address (optional):'
-      },
-      {
-        type: 'list',
-        name: 'license',
-        message: 'Please, select desired license:',
-        choices: choices
+        year: (new Date()).getFullYear(),
+        author: author
       }
-  ];
-
-  this.prompt(prompts, function (props) {
-    var filename = props.license + '.txt';
-
-    // data for template
-    this.year = (new Date()).getFullYear();
-    this.author = props.name;
-    if (props.email) {
-      this.author += ' <' + props.email + '>';
-    }
-    if (props.website) {
-      this.author += ' (' + props.website + ')';
-    }
-    this.author = this.author.trim();
-
-    this.template(filename, 'LICENSE');
-    cb();
-  }.bind(this));
-};
-
-LicenseGenerator.prototype.getUserHome = function getUserHome() {
-  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-};
+    );
+  }
+});
