@@ -65,6 +65,10 @@ module.exports = generators.Base.extend({
           name: 'license',
           message: 'Which license do you want to use?',
           choices: choices
+        },
+        {
+          name: 'year',
+          default: (new Date()).getFullYear()
         }
     ];
 
@@ -84,12 +88,13 @@ module.exports = generators.Base.extend({
       if (this.props.website) {
         author += ' (' + this.props.website.trim() + ')';
       }
+      var year = this.props.year;
 
       this.fs.copyTpl(
         this.templatePath(filename),
         this.destinationPath('LICENSE'),
         {
-          year: (new Date()).getFullYear(),
+          year: year,
           author: author
         }
       );
