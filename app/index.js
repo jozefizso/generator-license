@@ -8,18 +8,24 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
 
     this.option('name', {
-      description: 'Name of the license owner',
+      desc: 'Name of the license owner',
       required: false
     });
 
     this.option('email', {
-      description: 'Email of the license owner',
+      desc: 'Email of the license owner',
       required: false
     });
 
     this.option('website', {
-      description: 'Website of the license owner',
+      desc: 'Website of the license owner',
       required: false
+    });
+
+    this.option('year', {
+      desc: 'Year(s) to include on the license',
+      required: false,
+      defaults: (new Date()).getFullYear()
     });
   },
 
@@ -65,15 +71,15 @@ module.exports = generators.Base.extend({
         name: 'license',
         message: 'Which license do you want to use?',
         choices: choices
-      },
-      {
-        name: 'year',
-        default: (new Date()).getFullYear()
       }
     ];
 
     this.prompt(prompts, function (props) {
-      this.props = props;
+      this.props = _.extend({
+        name: this.options.name,
+        email: this.options.email,
+        website: this.options.website
+      }, props);
       done();
     }.bind(this));
   },
@@ -88,13 +94,12 @@ module.exports = generators.Base.extend({
       if (this.props.website) {
         author += ' (' + this.props.website.trim() + ')';
       }
-      var year = this.props.year;
 
       this.fs.copyTpl(
         this.templatePath(filename),
         this.destinationPath('LICENSE'),
         {
-          year: year,
+          year: this.options.year,
           author: author
         }
       );
