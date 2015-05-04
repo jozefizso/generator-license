@@ -7,12 +7,14 @@ var helpers = require('yeoman-generator').test;
 describe('license:app - generate Apache 2.0 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'Apache-2.0',
-        year: '2015'
+        license: 'Apache-2.0'
       })
       .on('end', done);
   });
@@ -29,12 +31,14 @@ describe('license:app - generate Apache 2.0 license', function () {
 describe('license:app - generate BSD 2 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'BSD-2-Clause-FreeBSD',
-        year: '2015'
+        license: 'BSD-2-Clause-FreeBSD'
       })
       .on('end', done);
   });
@@ -51,12 +55,14 @@ describe('license:app - generate BSD 2 license', function () {
 describe('license:app - generate BSD 3 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'BSD-3-Clause',
-        year: '2015'
+        license: 'BSD-3-Clause'
       })
       .on('end', done);
   });
@@ -73,12 +79,14 @@ describe('license:app - generate BSD 3 license', function () {
 describe('license:app - generate ISC license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'ISC',
-        year: '2015'
+        license: 'ISC'
       })
       .on('end', done);
   });
@@ -95,12 +103,14 @@ describe('license:app - generate ISC license', function () {
 describe('license:app - generate MIT license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'MIT',
-        year: '2015'
+        license: 'MIT'
       })
       .on('end', done);
   });
@@ -117,12 +127,14 @@ describe('license:app - generate MIT license', function () {
 describe('license:app - generate copyrighted license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'nolicense',
-        year: '2015'
+        license: 'nolicense'
       })
       .on('end', done);
   });
@@ -139,12 +151,14 @@ describe('license:app - generate copyrighted license', function () {
 describe('license:app - generate unlicense license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .withOptions({
+        year: '2015'
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'unlicense',
-        year: '2015'
+        license: 'unlicense'
       })
       .on('end', done);
   });
