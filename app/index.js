@@ -44,7 +44,13 @@ module.exports = generators.Base.extend({
       { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
       { name: 'NewBSD', value: 'BSD-3-Clause' },
       { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
-      { name: 'No License (Copyrighted)', value: 'nolicense' }
+      { name: 'No License (Copyrighted)', value: 'nolicense' },
+      { name: 'GNU General Public License 2.0', value: 'GPL-2.0' },
+      { name: 'GNU General Public License 3.0', value: 'GPL-3.0' },
+      { name: 'GNU Lesser General Public License 2.1', value: 'LGPL-2.1' },
+      { name: 'GNU Lesser General Public License 3.0', value: 'LGPL-3.0' },
+      { name: 'GNU Affero General Public License 3.0', value: 'AGPL-3.0' },
+      { name: 'What the Fuck Public License', value: 'WTFPL' },
     ];
 
     var prompts = [
