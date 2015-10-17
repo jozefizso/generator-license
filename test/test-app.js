@@ -19,8 +19,36 @@ describe('license:app', function () {
   it('creates LICENSE file', function () {
     assert.file('LICENSE');
   });
-  it('creates package.json file', function () {
-    assert.file('package.json');
+  it('does not create package.json file', function () {
+    assert.noFile('package.json');
+  });
+});
+
+describe('license:app with package.json', function () {
+  before(function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'MIT'
+      })
+      .withOptions({
+        force: true
+      })
+      .on('end', done);
+  });
+
+  it('creates LICENSE file', function () {
+    assert.file('LICENSE');
+  });
+  it('updates package.json file with license', function () {
+    assert.fileContent('package.json', '"license": "MIT"');
   });
 });
 
@@ -33,7 +61,8 @@ describe('license:app with options', function () {
       .withOptions({
         name: 'Rick',
         email: 'foo@example.com',
-        website: 'http://example.com'
+        website: 'http://example.com',
+        force: true
       })
       .on('end', done);
   });
@@ -41,18 +70,28 @@ describe('license:app with options', function () {
   it('creates LICENSE file', function () {
     assert.fileContent('LICENSE', 'ISC');
     assert.fileContent('LICENSE', 'Rick <foo@example.com> (http://example.com)');
-    assert.fileContent('package.json', '"license": "ISC"');
+  });
+  it('does not create package.json file', function () {
+    assert.noFile('package.json');
   });
 });
 
-describe('license:app with nolicense', function () {
+describe('license:app set to nolicense with package.json', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'nolicense'
+      })
+      .withOptions({
+        force: true
       })
       .on('end', done);
   });
