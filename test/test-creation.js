@@ -1,4 +1,5 @@
-/*global describe, before, it*/
+/* global __dirname */
+/* global describe, before, it */
 'use strict';
 var path = require('path');
 var assert = require('yeoman-assert');
