@@ -20,9 +20,9 @@
     "test": "mocha -R spec"
   },
   "dependencies": {
-    "git-config": "0.0.6",
-    "lodash": "^3.8.0",
-    "yeoman-generator": "^0.19.2"
+    "git-config": "^0.0.7",
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.20.3"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
