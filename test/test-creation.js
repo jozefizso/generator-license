@@ -8,8 +8,14 @@ var helpers = require('yeoman-generator').test;
 describe('license:app - generate Apache 2.0 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -32,8 +38,14 @@ describe('license:app - generate Apache 2.0 license', function () {
 describe('license:app - generate BSD 2 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -56,8 +68,14 @@ describe('license:app - generate BSD 2 license', function () {
 describe('license:app - generate BSD 3 license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -80,8 +98,14 @@ describe('license:app - generate BSD 3 license', function () {
 describe('license:app - generate ISC license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -104,8 +128,14 @@ describe('license:app - generate ISC license', function () {
 describe('license:app - generate MIT license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -128,8 +158,14 @@ describe('license:app - generate MIT license', function () {
 describe('license:app - generate copyrighted license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
@@ -152,8 +188,14 @@ describe('license:app - generate copyrighted license', function () {
 describe('license:app - generate unlicense license', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var done = this.async();
+        var fs = require('fs');
+        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+      })
       .withOptions({
-        year: '2015'
+        year: '2015',
+        force: true
       })
       .withPrompts({
         name: 'Rick',
