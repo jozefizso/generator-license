@@ -126,7 +126,7 @@ module.exports = generators.Base.extend({
   licenses: [
     { name: 'Apache 2.0', value: 'Apache-2.0' },
     { name: 'MIT', value: 'MIT' },
-    { name: 'Unlicense', value: 'Unlicense' },
+    { name: 'Unlicense', value: 'unlicense' },
     { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
     { name: 'NewBSD', value: 'BSD-3-Clause' },
     { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
