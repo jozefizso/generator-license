@@ -3,6 +3,16 @@ var _ = require('lodash');
 var generators = require('yeoman-generator');
 var gitConfig = require('git-config');
 
+var licenses = [
+  { name: 'Apache 2.0', value: 'Apache-2.0' },
+  { name: 'MIT', value: 'MIT' },
+  { name: 'Unlicense', value: 'unlicense' },
+  { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
+  { name: 'NewBSD', value: 'BSD-3-Clause' },
+  { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
+  { name: 'No License (Copyrighted)', value: 'nolicense' }
+];
+
 module.exports = generators.Base.extend({
   constructor: function () {
     generators.Base.apply(this, arguments);
@@ -37,7 +47,7 @@ module.exports = generators.Base.extend({
   prompting: function () {
     var done = this.async();
 
-    var choices = this.licenses;
+    var choices = licenses;
 
     var prompts = [
       {
@@ -123,13 +133,5 @@ module.exports = generators.Base.extend({
     }
   }
 }, {
-  licenses: [
-    { name: 'Apache 2.0', value: 'Apache-2.0' },
-    { name: 'MIT', value: 'MIT' },
-    { name: 'Unlicense', value: 'unlicense' },
-    { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
-    { name: 'NewBSD', value: 'BSD-3-Clause' },
-    { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
-    { name: 'No License (Copyrighted)', value: 'nolicense' }
-  ]
+  licenses: licenses
 });
