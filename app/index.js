@@ -108,28 +108,21 @@ module.exports = generators.Base.extend({
     },
 
     pkg: function () {
-      var done = this.async();
-      var fs = require('fs');
+      if (!this.fs.exists(this.destinationPath('package.json'))) {
+        return;
+      }
 
-      fs.exists(this.destinationPath('package.json'), function (exists) {
-        if (!exists) {
-          return done();
-        }
+      var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      pkg.license = this.props.license;
 
-        var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-        pkg.license = this.props.license;
+      // We don't want users to publish their module to NPM if they copyrighted
+      // their content.
+      if (this.props.license === 'nolicense') {
+        delete pkg.license;
+        pkg.private = true;
+      }
 
-        // We don't want users to publish their module to NPM if they copyrighted
-        // their content.
-        if (this.props.license === 'nolicense') {
-          delete pkg.license;
-          pkg.private = true;
-        }
-
-        this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
-        done();
-      }.bind(this));
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
   }
 }, {
