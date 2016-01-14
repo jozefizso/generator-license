@@ -54,19 +54,19 @@ module.exports = generators.Base.extend({
         name: 'name',
         message: 'What\'s your name:',
         default: this.options.name || this.gitc.user.name,
-        when: !this.options.name
+        when: this.options.name == null
       },
       {
         name: 'email',
         message: 'Your email (optional):',
         default: this.options.email || this.gitc.user.email,
-        when: !this.options.email
+        when: this.options.email == null
       },
       {
         name: 'website',
         message: 'Your website (optional):',
         default: this.options.website,
-        when: !this.options.website
+        when: this.options.website == null
       },
       {
         type: 'list',
