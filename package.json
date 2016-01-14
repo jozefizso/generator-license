@@ -14,7 +14,10 @@
     "name": "Jozef Izso",
     "url": "https://github.com/jozefizso"
   },
-  "repository": "jozefizso/generator-license",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jozefizso/generator-license.git"
+  },
   "main": "app/index.js",
   "scripts": {
     "test": "mocha -R spec"
