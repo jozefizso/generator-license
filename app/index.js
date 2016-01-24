@@ -1,5 +1,5 @@
 'use strict';
-var _ = require('lodash');
+var objectAssign = require('object-assign');
 var generators = require('yeoman-generator');
 var gitConfig = require('git-config');
 
@@ -77,7 +77,7 @@ module.exports = generators.Base.extend({
     ];
 
     this.prompt(prompts, function (props) {
-      this.props = _.extend({
+      this.props = objectAssign({
         name: this.options.name,
         email: this.options.email,
         website: this.options.website
