@@ -30,7 +30,7 @@
     "git-config": "^0.0.7",
     "object-assign": "^4.0.1",
     "process": "^0.11.2",
-    "yeoman-generator": "^0.22.5"
+    "yeoman-generator": "^0.23.1"
   },
   "devDependencies": {
     "mocha": "^2.4.4",
