@@ -35,7 +35,7 @@
   "devDependencies": {
     "mocha": "^2.4.4",
     "yeoman-assert": "^2.0.0",
-    "yeoman-test": "^1.0.0"
+    "yeoman-test": "^1.4.0"
   },
   "license": "MIT"
 }
