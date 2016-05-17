@@ -37,6 +37,11 @@ module.exports = generators.Base.extend({
       required: false,
       defaults: (new Date()).getFullYear()
     });
+
+    this.option('defaultLicense', {
+      desc: 'Default license',
+      required: false
+    });
   },
 
   initializing: function () {
@@ -70,6 +75,7 @@ module.exports = generators.Base.extend({
         type: 'list',
         name: 'license',
         message: 'Which license do you want to use?',
+        default: this.options.defaultLicense,
         choices: choices
       }
     ];
