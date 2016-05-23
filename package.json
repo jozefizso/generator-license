@@ -33,7 +33,7 @@
     "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {
-    "mocha": "^2.4.4",
+    "mocha": "^2.5.0",
     "yeoman-assert": "^2.0.0",
     "yeoman-test": "^1.0.0"
   },
