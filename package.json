@@ -29,10 +29,10 @@
   "dependencies": {
     "git-config": "^0.0.7",
     "object-assign": "^4.0.1",
-    "process": "^0.11.2",
     "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {
+    "process": "^0.11.2",
     "mocha": "^2.5.3",
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.4.0"
