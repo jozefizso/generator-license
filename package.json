@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "3.1.1",
+  "version": "4.0.0-beta",
   "description": "License generator for Yeoman based projects.",
   "keywords": [
     "yeoman-generator",
