@@ -45,8 +45,6 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function () {
-    var done = this.async();
-
     var choices = licenses;
 
     var prompts = [
@@ -76,13 +74,12 @@ module.exports = generators.Base.extend({
       }
     ];
 
-    this.prompt(prompts, function (props) {
+    return this.prompt(prompts).then(function (props) {
       this.props = objectAssign({
         name: this.options.name,
         email: this.options.email,
         website: this.options.website
       }, props);
-      done();
     }.bind(this));
   },
 
