@@ -6,12 +6,11 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('license:app - generate Apache 2.0 license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -23,7 +22,7 @@ describe('license:app - generate Apache 2.0 license', function () {
         website: 'http://example.com',
         license: 'Apache-2.0'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using Apache 2.0 template', function () {
@@ -36,12 +35,11 @@ describe('license:app - generate Apache 2.0 license', function () {
 });
 
 describe('license:app - generate BSD 2 license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -53,7 +51,7 @@ describe('license:app - generate BSD 2 license', function () {
         website: 'http://example.com',
         license: 'BSD-2-Clause-FreeBSD'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using BSD 2 template', function () {
@@ -66,12 +64,11 @@ describe('license:app - generate BSD 2 license', function () {
 });
 
 describe('license:app - generate BSD 3 license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -83,7 +80,7 @@ describe('license:app - generate BSD 3 license', function () {
         website: 'http://example.com',
         license: 'BSD-3-Clause'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using BSD 3 template', function () {
@@ -96,12 +93,11 @@ describe('license:app - generate BSD 3 license', function () {
 });
 
 describe('license:app - generate ISC license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -113,7 +109,7 @@ describe('license:app - generate ISC license', function () {
         website: 'http://example.com',
         license: 'ISC'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using ISC template', function () {
@@ -126,12 +122,11 @@ describe('license:app - generate ISC license', function () {
 });
 
 describe('license:app - generate MIT license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -143,7 +138,7 @@ describe('license:app - generate MIT license', function () {
         website: 'http://example.com',
         license: 'MIT'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using MIT template', function () {
@@ -156,12 +151,11 @@ describe('license:app - generate MIT license', function () {
 });
 
 describe('license:app - generate copyrighted license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -173,7 +167,7 @@ describe('license:app - generate copyrighted license', function () {
         website: 'http://example.com',
         license: 'nolicense'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using nolicense template', function () {
@@ -186,12 +180,11 @@ describe('license:app - generate copyrighted license', function () {
 });
 
 describe('license:app - generate unlicense license', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
         year: '2015',
@@ -203,7 +196,7 @@ describe('license:app - generate unlicense license', function () {
         website: 'http://example.com',
         license: 'unlicense'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file using unlicense template', function () {

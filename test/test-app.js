@@ -6,15 +6,15 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('license:app', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'MIT'
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('creates LICENSE file', function () {
@@ -78,12 +78,11 @@ describe('license:app with options', function () {
 });
 
 describe('license:app set to nolicense with package.json', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
-        var done = this.async();
         var fs = require('fs');
-        fs.writeFile(path.join(dir, 'package.json'), '{}', done);
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withPrompts({
         name: 'Rick',
@@ -94,7 +93,7 @@ describe('license:app set to nolicense with package.json', function () {
       .withOptions({
         force: true
       })
-      .on('end', done);
+      .toPromise();
   });
 
   it('makes npm module private', function () {
