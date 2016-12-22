@@ -1,30 +1,30 @@
 /* global __dirname */
 /* global describe, before, after, it */
 'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var process = require('process');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const process = require('process');
 
 describe('license:app templates', function () {
-  var cwd = null;
+  let cwd = null;
   before(function(done) {
     cwd = process.cwd();
     process.chdir(__dirname +'/../');
     done();
   });
-  
+
   after(function(done) {
     process.chdir(cwd);
     done();
-  })
-  
-  var app = require('../app');
-  var licensesToTest = app.licenses;
-  
+  });
+
+  const app = require('../app');
+  const licensesToTest = app.licenses;
+
   licensesToTest.forEach(function(license) {
-    var expectedLicenseFilename = license.value +'.txt';
-    
+    const expectedLicenseFilename = license.value +'.txt';
+
     it('license '+ license.name +' have corresponding template file '+ expectedLicenseFilename, function () {
       assert.file('app/templates/'+ expectedLicenseFilename);
     });

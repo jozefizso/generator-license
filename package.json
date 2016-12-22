@@ -28,14 +28,13 @@
   },
   "dependencies": {
     "git-config": "^0.0.7",
-    "object-assign": "^4.0.1",
-    "yeoman-generator": "^0.23.4"
+    "yeoman-generator": "^1.0.1"
   },
   "devDependencies": {
-    "process": "^0.11.2",
-    "mocha": "^2.5.3",
-    "yeoman-assert": "^2.2.1",
-    "yeoman-test": "^1.4.0"
+    "process": "^0.11.9",
+    "mocha": "^3.2.0",
+    "yeoman-assert": "^2.2.2",
+    "yeoman-test": "^1.6.0"
   },
   "license": "MIT"
 }
