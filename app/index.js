@@ -1,9 +1,8 @@
 'use strict';
-var objectAssign = require('object-assign');
-var generators = require('yeoman-generator');
-var gitConfig = require('git-config');
+const Generator = require('yeoman-generator');
+const gitConfig = require('git-config');
 
-var licenses = [
+const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
   { name: 'MIT', value: 'MIT' },
   { name: 'Unlicense', value: 'unlicense' },
@@ -13,41 +12,49 @@ var licenses = [
   { name: 'No License (Copyrighted)', value: 'nolicense' }
 ];
 
-module.exports = generators.Base.extend({
-  constructor: function () {
-    generators.Base.apply(this, arguments);
+module.exports = class GeneratorLicense extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
 
     this.option('name', {
+      type: String,
       desc: 'Name of the license owner',
       required: false
     });
 
     this.option('email', {
+      type: String,
       desc: 'Email of the license owner',
       required: false
     });
 
     this.option('website', {
+      type: String,
       desc: 'Website of the license owner',
       required: false
     });
 
     this.option('year', {
+      type: Number,
       desc: 'Year(s) to include on the license',
       required: false,
       defaults: (new Date()).getFullYear()
     });
-  },
 
-  initializing: function () {
+    this.option('defaultLicense', {
+      type: String,
+      desc: 'Default license',
+      required: false
+    });
+  }
+
+  initializing() {
     this.gitc = gitConfig.sync();
     this.gitc.user = this.gitc.user || {};
-  },
+  }
 
-  prompting: function () {
-    var choices = licenses;
-
-    var prompts = [
+  prompting() {
+    const prompts = [
       {
         name: 'name',
         message: 'What\'s your name:',
@@ -70,58 +77,57 @@ module.exports = generators.Base.extend({
         type: 'list',
         name: 'license',
         message: 'Which license do you want to use?',
-        choices: choices
+        default: this.options.defaultLicense,
+        choices: licenses
       }
     ];
 
-    return this.prompt(prompts).then(function (props) {
-      this.props = objectAssign({
+    return this.prompt(prompts).then((props) => {
+      this.props = Object.assign({
         name: this.options.name,
         email: this.options.email,
         website: this.options.website
       }, props);
-    }.bind(this));
-  },
-
-  writing: {
-    license: function () {
-      var filename = this.props.license + '.txt';
-      var author = this.props.name.trim();
-      if (this.props.email) {
-        author += ' <' + this.props.email.trim() + '>';
-      }
-      if (this.props.website) {
-        author += ' (' + this.props.website.trim() + ')';
-      }
-
-      this.fs.copyTpl(
-        this.templatePath(filename),
-        this.destinationPath('LICENSE'),
-        {
-          year: this.options.year,
-          author: author
-        }
-      );
-    },
-
-    pkg: function () {
-      if (!this.fs.exists(this.destinationPath('package.json'))) {
-        return;
-      }
-
-      var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-      pkg.license = this.props.license;
-
-      // We don't want users to publish their module to NPM if they copyrighted
-      // their content.
-      if (this.props.license === 'nolicense') {
-        delete pkg.license;
-        pkg.private = true;
-      }
-
-      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    }
+    });
   }
-}, {
-  licenses: licenses
-});
+
+  writing() {
+    // license file
+    const filename = this.props.license + '.txt';
+    let author = this.props.name.trim();
+    if (this.props.email) {
+      author += ' <' + this.props.email.trim() + '>';
+    }
+    if (this.props.website) {
+      author += ' (' + this.props.website.trim() + ')';
+    }
+
+    this.fs.copyTpl(
+      this.templatePath(filename),
+      this.destinationPath('LICENSE'),
+      {
+        year: this.options.year,
+        author: author
+      }
+    );
+
+    // package
+    if (!this.fs.exists(this.destinationPath('package.json'))) {
+      return;
+    }
+
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    pkg.license = this.props.license;
+
+    // We don't want users to publish their module to NPM if they copyrighted
+    // their content.
+    if (this.props.license === 'nolicense') {
+      delete pkg.license;
+      pkg.private = true;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+};
+
+module.exports.licenses = licenses;
