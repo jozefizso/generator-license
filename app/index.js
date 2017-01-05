@@ -10,6 +10,7 @@ const licenses = [
   { name: 'NewBSD', value: 'BSD-3-Clause' },
   { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
   { name: 'GNU AGPL 3.0', value: 'AGPL-3.0' },
+  { name: 'GNU GPL 3.0', value: 'GNU-GPL-3.0' },
   { name: 'No License (Copyrighted)', value: 'nolicense' }
 ];
 
