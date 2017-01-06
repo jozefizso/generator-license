@@ -26,6 +26,7 @@ yo license
 * [ISC License][5]
 - [Mozilla Public License 2.0][10]
 - [GNU AGPL 3.0 License][8]
+- [GNU GPL 3.0 License][9]
 * [No License][6]
 * [Unlicense][7]
 
@@ -40,4 +41,5 @@ yo license
 [6]: http://choosealicense.com/licenses/no-license/
 [7]: http://unlicense.org/
 [8]: http://choosealicense.com/licenses/agpl-3.0/
+[9]: http://choosealicense.com/licenses/gpl-3.0/
 [10]: http://choosealicense.com/licenses/mpl-2.0/
