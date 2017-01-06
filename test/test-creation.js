@@ -180,6 +180,36 @@ describe('license:app - generate MIT license', function () {
   });
 });
 
+describe('license:app - generate MPL 2.0 license', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var fs = require('fs');
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
+      })
+      .withOptions({
+        year: '2015',
+        force: true
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'MPL-2.0'
+      })
+      .toPromise();
+  });
+
+  it('creates LICENSE file using MPL 2.0 template', function () {
+    assert.fileContent('LICENSE', 'Mozilla Public License Version 2.0');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+  });
+  it('creates package.json file with MPL 2.0 license', function () {
+    assert.fileContent('package.json', '"license": "MPL-2.0"');
+  });
+});
+
+
 describe('license:app - generate copyrighted license', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
