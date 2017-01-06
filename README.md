@@ -41,4 +41,3 @@ yo license
 [7]: http://unlicense.org/
 [8]: http://choosealicense.com/licenses/agpl-3.0/
 [9]: http://choosealicense.com/licenses/gpl-3.0/
-

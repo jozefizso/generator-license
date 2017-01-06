@@ -11,6 +11,7 @@ const licenses = [
   { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
   { name: 'GNU AGPL 3.0', value: 'AGPL-3.0' },
   { name: 'GNU GPL 3.0', value: 'GPL-3.0' },
+  { name: 'GNU AGPL 3.0', value: 'AGPL-3.0' },
   { name: 'No License (Copyrighted)', value: 'nolicense' }
 ];
 
