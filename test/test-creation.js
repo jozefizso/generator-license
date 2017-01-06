@@ -121,7 +121,7 @@ describe('license:app - generate ISC license', function () {
   });
 });
 
-describe('license:app - generate AGPL 3.0 license', function () {
+describe('license:app - generate GNU AGPL 3.0 license', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
