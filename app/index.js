@@ -9,6 +9,7 @@ const licenses = [
   { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
   { name: 'NewBSD', value: 'BSD-3-Clause' },
   { name: 'Internet Systems Consortium (ISC)', value: 'ISC' },
+  { name: 'GNU AGPL 3.0', value: 'AGPL-3.0' },
   { name: 'No License (Copyrighted)', value: 'nolicense' }
 ];
 

@@ -24,6 +24,7 @@ yo license
 * [FreeBSD License][3]
 * [NewBSD License][4]
 * [ISC License][5]
+- [GNU AGPL 3.0 License][8]
 * [No License][6]
 * [Unlicense][7]
 
@@ -37,3 +38,5 @@ yo license
 [5]: http://en.wikipedia.org/wiki/ISC_license
 [6]: http://choosealicense.com/licenses/no-license/
 [7]: http://unlicense.org/
+[8]: http://choosealicense.com/licenses/agpl-3.0/
+

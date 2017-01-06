@@ -121,6 +121,36 @@ describe('license:app - generate ISC license', function () {
   });
 });
 
+describe('license:app - generate GNU AGPL 3.0 license', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var fs = require('fs');
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
+      })
+      .withOptions({
+        year: '2015',
+        force: true
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'AGPL-3.0'
+      })
+      .toPromise();
+  });
+
+  it('creates LICENSE file using AGPL-3.0 template', function () {
+    assert.fileContent('LICENSE', 'GNU AFFERO GENERAL PUBLIC LICENSE');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+  });
+  it('creates package.json file with AGPL-3.0 license', function () {
+    assert.fileContent('package.json', '"license": "AGPL-3.0"');
+  });
+});
+
+
 describe('license:app - generate MIT license', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
