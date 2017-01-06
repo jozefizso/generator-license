@@ -5,6 +5,7 @@ const gitConfig = require('git-config');
 const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
   { name: 'MIT', value: 'MIT' },
+  { name: 'Mozilla Public License 2.0', value: 'MPL-2.0' },
   { name: 'Unlicense', value: 'unlicense' },
   { name: 'FreeBSD', value: 'BSD-2-Clause-FreeBSD' },
   { name: 'NewBSD', value: 'BSD-3-Clause' },
