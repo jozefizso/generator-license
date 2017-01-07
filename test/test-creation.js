@@ -56,7 +56,7 @@ describe('license:app - generate BSD 2 license', function () {
 
   it('creates LICENSE file using BSD 2 template', function () {
     assert.fileContent('LICENSE', 'FreeBSD Project');
-    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with BSD 2 license', function () {
     assert.fileContent('package.json', '"license": "BSD-2-Clause-FreeBSD"');
@@ -85,7 +85,7 @@ describe('license:app - generate BSD 3 license', function () {
 
   it('creates LICENSE file using BSD 3 template', function () {
     assert.fileContent('LICENSE', 'THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"');
-    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with BSD 3 license', function () {
     assert.fileContent('package.json', '"license": "BSD-3-Clause"');
@@ -143,7 +143,7 @@ describe('license:app - generate GNU AGPL 3.0 license', function () {
 
   it('creates LICENSE file using AGPL-3.0 template', function () {
     assert.fileContent('LICENSE', 'GNU AFFERO GENERAL PUBLIC LICENSE');
-    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with AGPL-3.0 license', function () {
     assert.fileContent('package.json', '"license": "AGPL-3.0"');
@@ -202,7 +202,7 @@ describe('license:app - generate MPL 2.0 license', function () {
 
   it('creates LICENSE file using MPL 2.0 template', function () {
     assert.fileContent('LICENSE', 'Mozilla Public License Version 2.0');
-    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with MPL 2.0 license', function () {
     assert.fileContent('package.json', '"license": "MPL-2.0"');
@@ -289,7 +289,7 @@ describe('license:app - generate GPL-3.0 license', function () {
 
   it('creates LICENSE file using GPL-3.0 template', function () {
     assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent('LICENSE', 'Copyright (c) 2015, Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with GPL-3.0 license', function () {
     assert.fileContent('package.json', '"license": "GPL-3.0"');
