@@ -17,18 +17,44 @@ yo license
 - Install the generator: `npm install -g generator-license`
 - Run: `yo license`, enter your full name and choose a license
 
+The generator will generate the `LICENSE` file and fill the `license` field of the `package.json`.
+
+### Compose with generator license in your own generator
+
+`generator-license` can be easily embedded into your own generator using [Yeoman composability](http://yeoman.io/authoring/composability.html).
+
+First, install `generator-license` as a dependency of your own generator.
+
+```
+npm install --save generator-license
+```
+
+Then call it from your generator.
+
+```js
+this.composeWith(require.resolve('generator-license'), {
+  name: 'John Doe', // (optional) Owner's name
+  email: 'john.doe@example.com', // (optional) Owner's email
+  website: 'https://example.com', // (optional) Owner's website
+  year: '1945', // (optional) License year (defaults to current year)
+  defaultLicense: 'MIT', // (optional) Select a default license
+});
+```
+
+All the options are optional; the generator will prompt for answers when information is not provided.
+
 ### Supported licenses
 
-* [Apache 2 License][1]
-* [MIT License][2]
-* [FreeBSD License][3]
-* [NewBSD License][4]
-* [ISC License][5]
+- [Apache 2 License][1]
+- [MIT License][2]
+- [FreeBSD License][3]
+- [NewBSD License][4]
+- [ISC License][5]
 - [Mozilla Public License 2.0][10]
 - [GNU AGPL 3.0 License][8]
 - [GNU GPL 3.0 License][9]
-* [No License][6]
-* [Unlicense][7]
+- [No License][6]
+- [Unlicense][7]
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
