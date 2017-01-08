@@ -20,7 +20,7 @@
   },
   "main": "app/index.js",
   "files": [
-    "app",
+    "app"
   ],
   "scripts": {
     "test": "mocha -R spec"
