@@ -38,6 +38,7 @@ this.composeWith(require.resolve('generator-license'), {
   website: 'https://example.com', // (optional) Owner's website
   year: '1945', // (optional) License year (defaults to current year)
   defaultLicense: 'MIT', // (optional) Select a default license
+  license: 'MIT', // (optional) Select a license, so no license prompt will happen, in case you want to handle it outside of this generator
 });
 ```
 
