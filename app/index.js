@@ -1,6 +1,7 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const gitConfig = require('git-config');
+const path = require('path');
 
 const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
@@ -47,6 +48,12 @@ module.exports = class GeneratorLicense extends Generator {
     this.option('defaultLicense', {
       type: String,
       desc: 'Default license',
+      required: false
+    });
+
+    this.option('subDir', {
+      type: String,
+      desc: 'Optional subdirectory to write license file to',
       required: false
     });
   }
@@ -97,6 +104,7 @@ module.exports = class GeneratorLicense extends Generator {
   writing() {
     // license file
     const filename = this.props.license + '.txt';
+    const licensePath = this.options.subDir ? path.join(this.options.subDir, 'LICENSE') : 'LICENSE';
     let author = this.props.name.trim();
     if (this.props.email) {
       author += ' <' + this.props.email.trim() + '>';
@@ -107,7 +115,7 @@ module.exports = class GeneratorLicense extends Generator {
 
     this.fs.copyTpl(
       this.templatePath(filename),
-      this.destinationPath('LICENSE'),
+      this.destinationPath(licensePath),
       {
         year: this.options.year,
         author: author
