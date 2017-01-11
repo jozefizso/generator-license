@@ -296,7 +296,7 @@ describe('license:app - generate GPL-3.0 license', function () {
   });
 });
 
-describe('license:app - generate license in destination option', function () {
+describe('license:app - generate license with output option, change directory', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
@@ -320,6 +320,36 @@ describe('license:app - generate license in destination option', function () {
   it('creates LICENSE file using GPL-3.0 template', function () {
     assert.fileContent('src/LICENSE', 'GNU GENERAL PUBLIC LICENSE');
     assert.fileContent('src/LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
+  });
+  it('creates package.json file with GPL-3.0 license', function () {
+    assert.fileContent('package.json', '"license": "GPL-3.0"');
+  });
+});
+
+describe('license:app - generate license with output option, change directory and filename', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var fs = require('fs');
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
+      })
+      .withOptions({
+        year: '2015',
+        force: true,
+        output: 'src/license.txt'
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'GPL-3.0'
+      })
+      .toPromise();
+  });
+
+  it('creates LICENSE file using GPL-3.0 template', function () {
+    assert.fileContent('src/license.txt', 'GNU GENERAL PUBLIC LICENSE');
+    assert.fileContent('src/license.txt', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
   });
   it('creates package.json file with GPL-3.0 license', function () {
     assert.fileContent('package.json', '"license": "GPL-3.0"');
