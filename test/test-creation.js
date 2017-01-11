@@ -317,12 +317,9 @@ describe('license:app - generate license with output option, change directory', 
       .toPromise();
   });
 
-  it('creates LICENSE file using GPL-3.0 template', function () {
-    assert.fileContent('src/LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent('src/LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
-  });
-  it('creates package.json file with GPL-3.0 license', function () {
-    assert.fileContent('package.json', '"license": "GPL-3.0"');
+  it('creates license at path: src/LICENSE, no file at LICENSE', function () {
+    assert.file('src/LICENSE');
+    assert.noFile('LICENSE');
   });
 });
 
@@ -347,12 +344,9 @@ describe('license:app - generate license with output option, change directory an
       .toPromise();
   });
 
-  it('creates LICENSE file using GPL-3.0 template', function () {
-    assert.fileContent('src/license.txt', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent('src/license.txt', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
-  });
-  it('creates package.json file with GPL-3.0 license', function () {
-    assert.fileContent('package.json', '"license": "GPL-3.0"');
+  it('creates license at path: src/license.txt, no file at LICENSE', function () {
+    assert.file('src/license.txt');
+    assert.noFile('LICENSE');
   });
 });
 
