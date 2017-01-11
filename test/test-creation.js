@@ -306,7 +306,7 @@ describe('license:app - generate license in destination option', function () {
       .withOptions({
         year: '2015',
         force: true,
-        subDir: 'src'
+        output: 'src/LICENSE'
       })
       .withPrompts({
         name: 'Rick',
