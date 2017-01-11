@@ -46,10 +46,10 @@ module.exports = class GeneratorLicense extends Generator {
 
     this.option('licensePrompt', {
       type: String,
-      desc: 'Customize license prompt text',
-      required: false
+      desc: 'License prompt text',
+      defaults: 'Which license do you want to use?',
+      required: true
     });
-
 
     this.option('defaultLicense', {
       type: String,
@@ -86,9 +86,7 @@ module.exports = class GeneratorLicense extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: (this.options.licensePrompt
-                ? this.options.licensePrompt
-                : 'Which license do you want to use?'),
+        message: this.options.licensePrompt,
         default: this.options.defaultLicense,
         choices: licenses
       }
