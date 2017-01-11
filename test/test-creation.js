@@ -34,6 +34,36 @@ describe('license:app - generate Apache 2.0 license', function () {
   });
 });
 
+describe('license:app - generate Apache 2.0 license with 2013-2015 year', function () {
+  before(function () {
+    return helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var fs = require('fs');
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
+      })
+      .withOptions({
+        year: '2013-2015',
+        force: true
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'Apache-2.0'
+      })
+      .toPromise();
+  });
+
+  it('creates LICENSE file using Apache 2.0 template', function () {
+    assert.fileContent('LICENSE', 'Apache License, Version 2.0');
+    assert.fileContent('LICENSE', 'Copyright 2013-2015 Rick <foo@example.com> (http://example.com)');
+  });
+  it('creates package.json file with Apache 2.0 license', function () {
+    assert.fileContent('package.json', '"license": "Apache-2.0"');
+  });
+});
+
+
 describe('license:app - generate BSD 2 license', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../app'))

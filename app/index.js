@@ -38,7 +38,7 @@ module.exports = class GeneratorLicense extends Generator {
     });
 
     this.option('year', {
-      type: Number,
+      type: String,
       desc: 'Year(s) to include on the license',
       required: false,
       defaults: (new Date()).getFullYear()
