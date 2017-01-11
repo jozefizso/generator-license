@@ -49,6 +49,13 @@ module.exports = class GeneratorLicense extends Generator {
       desc: 'Default license',
       required: false
     });
+
+    this.option('output', {
+      type: String,
+      desc: 'Set the output file for the generated license',
+      required: false,
+      defaults: 'LICENSE'
+    });
   }
 
   initializing() {
@@ -107,7 +114,7 @@ module.exports = class GeneratorLicense extends Generator {
 
     this.fs.copyTpl(
       this.templatePath(filename),
-      this.destinationPath('LICENSE'),
+      this.destinationPath(this.options.output),
       {
         year: this.options.year,
         author: author
