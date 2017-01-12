@@ -48,7 +48,8 @@ module.exports = class GeneratorLicense extends Generator {
       type: String,
       desc: 'License prompt text',
       defaults: 'Which license do you want to use?',
-      required: true
+      hide: true,
+      required: false
     });
 
     this.option('defaultLicense', {
