@@ -37,6 +37,7 @@ this.composeWith(require.resolve('generator-license'), {
   email: 'john.doe@example.com', // (optional) Owner's email
   website: 'https://example.com', // (optional) Owner's website
   year: '1945', // (optional) License year (defaults to current year)
+  licensePrompt: 'Which license do you want to use?' // (optional) customize license prompt text
   defaultLicense: 'MIT', // (optional) Select a default license
   license: 'MIT', // (optional) Select a license, so no license prompt will happen, in case you want to handle it outside of this generator
 });

@@ -44,6 +44,14 @@ module.exports = class GeneratorLicense extends Generator {
       defaults: (new Date()).getFullYear()
     });
 
+    this.option('licensePrompt', {
+      type: String,
+      desc: 'License prompt text',
+      defaults: 'Which license do you want to use?',
+      hide: true,
+      required: false
+    });
+
     this.option('defaultLicense', {
       type: String,
       desc: 'Default license',
@@ -92,7 +100,7 @@ module.exports = class GeneratorLicense extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: 'Which license do you want to use?',
+        message: this.options.licensePrompt,
         default: this.options.defaultLicense,
         when: this.options.license == null || licenses.find(x => x.value === this.options.license) === undefined,
         choices: licenses

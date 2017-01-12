@@ -88,6 +88,7 @@ describe('license:app set to nolicense with package.json', function () {
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
+        licensePrompt: 'Choose a license',
         license: 'nolicense'
       })
       .withOptions({
@@ -101,3 +102,4 @@ describe('license:app set to nolicense with package.json', function () {
     assert.fileContent('package.json', '"private": true');
   });
 });
+
