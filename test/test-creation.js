@@ -1,5 +1,3 @@
-/* global __dirname */
-/* global describe, before, it */
 'use strict';
 var path = require('path');
 var assert = require('yeoman-assert');
@@ -21,8 +19,7 @@ describe('license:app - generate Apache 2.0 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'Apache-2.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using Apache 2.0 template', function () {
@@ -50,8 +47,7 @@ describe('license:app - generate Apache 2.0 license with 2013-2015 year', functi
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'Apache-2.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using Apache 2.0 template', function () {
@@ -80,8 +76,7 @@ describe('license:app - generate BSD 2 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'BSD-2-Clause-FreeBSD'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using BSD 2 template', function () {
@@ -109,8 +104,7 @@ describe('license:app - generate BSD 3 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'BSD-3-Clause'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using BSD 3 template', function () {
@@ -138,8 +132,7 @@ describe('license:app - generate ISC license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'ISC'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using ISC template', function () {
@@ -167,8 +160,7 @@ describe('license:app - generate GNU AGPL 3.0 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'AGPL-3.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using AGPL-3.0 template', function () {
@@ -197,8 +189,7 @@ describe('license:app - generate MIT license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'MIT'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using MIT template', function () {
@@ -226,8 +217,7 @@ describe('license:app - generate MPL 2.0 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'MPL-2.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using MPL 2.0 template', function () {
@@ -256,8 +246,7 @@ describe('license:app - generate copyrighted license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'nolicense'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using nolicense template', function () {
@@ -285,8 +274,7 @@ describe('license:app - generate unlicense license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'unlicense'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using unlicense template', function () {
@@ -313,8 +301,7 @@ describe('license:app - generate GPL-3.0 license', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'GPL-3.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using GPL-3.0 template', function () {
@@ -325,61 +312,6 @@ describe('license:app - generate GPL-3.0 license', function () {
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });
-
-describe('license:app - generate license with output option, change directory', function () {
-  before(function () {
-    return helpers.run(path.join(__dirname, '../app'))
-      .inTmpDir(function (dir) {
-        var fs = require('fs');
-        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
-      })
-      .withOptions({
-        year: '2015',
-        force: true,
-        output: 'src/LICENSE'
-      })
-      .withPrompts({
-        name: 'Rick',
-        email: 'foo@example.com',
-        website: 'http://example.com',
-        license: 'GPL-3.0'
-      })
-      .toPromise();
-  });
-
-  it('creates license at path: src/LICENSE, no file at LICENSE', function () {
-    assert.file('src/LICENSE');
-    assert.noFile('LICENSE');
-  });
-});
-
-describe('license:app - generate license with output option, change directory and filename', function () {
-  before(function () {
-    return helpers.run(path.join(__dirname, '../app'))
-      .inTmpDir(function (dir) {
-        var fs = require('fs');
-        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
-      })
-      .withOptions({
-        year: '2015',
-        force: true,
-        output: 'src/license.txt'
-      })
-      .withPrompts({
-        name: 'Rick',
-        email: 'foo@example.com',
-        website: 'http://example.com',
-        license: 'GPL-3.0'
-      })
-      .toPromise();
-  });
-
-  it('creates license at path: src/license.txt, no file at LICENSE', function () {
-    assert.file('src/license.txt');
-    assert.noFile('LICENSE');
-  });
-});
-
 
 describe('license:app - generate GPL-3.0 license via option', function () {
   before(function () {
@@ -397,8 +329,7 @@ describe('license:app - generate GPL-3.0 license via option', function () {
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using GPL-3.0 template', function () {
@@ -428,8 +359,7 @@ describe('license:app - generate GPL-3.0 license invalid option', function () {
         email: 'foo@example.com',
         website: 'http://example.com',
         license: 'GPL-3.0'
-      })
-      .toPromise();
+      });
   });
 
   it('creates LICENSE file using GPL-3.0 template', function () {
@@ -440,4 +370,3 @@ describe('license:app - generate GPL-3.0 license invalid option', function () {
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });
-
