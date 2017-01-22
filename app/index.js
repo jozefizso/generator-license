@@ -83,26 +83,26 @@ module.exports = class GeneratorLicense extends Generator {
         name: 'name',
         message: 'What\'s your name:',
         default: this.options.name || this.gitc.user.name,
-        when: this.options.name == null
+        when: !this.options.name
       },
       {
         name: 'email',
         message: 'Your email (optional):',
         default: this.options.email || this.gitc.user.email,
-        when: this.options.email == null
+        when: !this.options.email
       },
       {
         name: 'website',
         message: 'Your website (optional):',
         default: this.options.website,
-        when: this.options.website == null
+        when: !this.options.website
       },
       {
         type: 'list',
         name: 'license',
         message: this.options.licensePrompt,
         default: this.options.defaultLicense,
-        when: this.options.license == null || licenses.find(x => x.value === this.options.license) === undefined,
+        when: !this.options.license || licenses.find(x => x.value === this.options.license) === undefined,
         choices: licenses
       }
     ];
