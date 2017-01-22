@@ -23,13 +23,19 @@
     "app"
   ],
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "gulp"
   },
   "dependencies": {
     "git-config": "^0.0.7",
     "yeoman-generator": "^1.0.1"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-plumber": "^1.0.0",
     "process": "^0.11.9",
     "mocha": "^3.2.0",
     "yeoman-assert": "^2.2.2",
