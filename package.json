@@ -25,7 +25,8 @@
   "scripts": {
     "pretest": "eslint **/*.js --fix",
     "test": "jest",
-    "posttest": "cat ./coverage/lcov.info | coveralls"
+    "posttest": "cat ./coverage/lcov.info | coveralls",
+    "prepublish": "nsp check"
   },
   "dependencies": {
     "git-config": "^0.0.7",
@@ -37,6 +38,7 @@
     "eslint-config-xo-space": "^0.15.0",
     "jest": "^18.0.0",
     "jest-cli": "^18.0.0",
+    "nsp": "^2.6.2",
     "yeoman-assert": "^2.2.2",
     "yeoman-test": "^1.6.0"
   },
