@@ -24,7 +24,6 @@
   ],
   "scripts": {
     "test": "jest && eslint **/*.js",
-    "posttest": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "nsp check"
   },
   "dependencies": {
