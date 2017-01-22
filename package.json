@@ -23,8 +23,7 @@
     "app"
   ],
   "scripts": {
-    "pretest": "eslint **/*.js --fix",
-    "test": "jest",
+    "test": "jest && eslint **/*.js",
     "posttest": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "nsp check"
   },
