@@ -83,7 +83,7 @@ module.exports = class GeneratorLicense extends Generator {
         name: 'name',
         message: 'What\'s your name:',
         default: this.options.name || this.gitc.user.name,
-        when: this.options.name === null || this.options === undefined
+        when: this.options.name === null || this.options.name === undefined
       },
       {
         name: 'email',
