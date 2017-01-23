@@ -23,8 +23,8 @@
     "app"
   ],
   "scripts": {
-    "test": "jest",
-    "posttest": "cat ./coverage/lcov.info | coveralls"
+    "test": "jest && eslint **/*.js",
+    "prepublish": "nsp check"
   },
   "dependencies": {
     "git-config": "^0.0.7",
@@ -32,10 +32,19 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.15",
+    "eslint": "^3.14.0",
+    "eslint-config-xo-space": "^0.15.0",
     "jest": "^18.0.0",
     "jest-cli": "^18.0.0",
+    "nsp": "^2.6.2",
     "yeoman-assert": "^2.2.2",
     "yeoman-test": "^1.6.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true
+    }
   },
   "license": "MIT",
   "jest": {

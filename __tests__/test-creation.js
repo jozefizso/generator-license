@@ -55,7 +55,6 @@ describe('license:app - generate Apache 2.0 license with 2013-2015 year', functi
   });
 });
 
-
 describe('license:app - generate BSD 2 license', function () {
   beforeEach(function () {
     return helpers.run(path.join(__dirname, '../app'))
@@ -160,7 +159,6 @@ describe('license:app - generate GNU AGPL 3.0 license', function () {
   });
 });
 
-
 describe('license:app - generate MIT license', function () {
   beforeEach(function () {
     return helpers.run(path.join(__dirname, '../app'))
@@ -212,7 +210,6 @@ describe('license:app - generate MPL 2.0 license', function () {
     assert.fileContent('package.json', '"license": "MPL-2.0"');
   });
 });
-
 
 describe('license:app - generate copyrighted license', function () {
   beforeEach(function () {
@@ -316,7 +313,6 @@ describe('license:app - generate GPL-3.0 license via option', function () {
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });
-
 
 describe('license:app - generate GPL-3.0 license invalid option', function () {
   beforeEach(function () {
