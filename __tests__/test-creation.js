@@ -288,6 +288,36 @@ describe('license:app - generate GPL-3.0 license', function () {
   });
 });
 
+describe('license:app - generate LGPL-3.0 license', function () {
+  beforeEach(function () {
+    return helpers.run(path.join(__dirname, '../app'))
+      .inTmpDir(function (dir) {
+        var fs = require('fs');
+        fs.writeFileSync(path.join(dir, 'package.json'), '{}');
+      })
+      .withOptions({
+        year: '2015',
+        force: true
+      })
+      .withPrompts({
+        name: 'Rick',
+        email: 'foo@example.com',
+        website: 'http://example.com',
+        license: 'LGPL-3.0'
+      });
+  });
+
+  it('creates LICENSE file using LGPL-3.0 template and also contains GPL-3.0', function () {
+    // both licenses must be included when using LGPL
+    // the test below is intended to check for both licenses as both are
+    // included in the file
+    assert.fileContent('LICENSE', 'GNU LESSER GENERAL PUBLIC LICENSE');
+    assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
+    assert.fileContent('package.json', '"license": "LGPL-3.0"');
+  });
+});
+
 describe('license:app - generate GPL-3.0 license via option', function () {
   beforeEach(function () {
     return helpers.run(path.join(__dirname, '../app'))
