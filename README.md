@@ -1,4 +1,5 @@
 # generator-license
+
 [![Build Status](https://img.shields.io/travis/jozefizso/generator-license.svg)](https://travis-ci.org/jozefizso/generator-license)
 [![NPM version](https://img.shields.io/npm/v/generator-license.svg)](https://www.npmjs.org/package/generator-license)
 [![Coverage Status](https://coveralls.io/repos/github/jozefizso/generator-license/badge.svg)](https://coveralls.io/github/jozefizso/generator-license)
@@ -59,6 +60,9 @@ All the options are optional; the generator will prompt for answers when informa
 - [Unlicense][90]
 - [No License][100]
 
+For [Creative Commons Licenses][200] (useful for media files, documentation and
+other creative works) you can use [generator-license-cc][201].
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
@@ -72,3 +76,5 @@ All the options are optional; the generator will prompt for answers when informa
 [80]: http://choosealicense.com/licenses/gpl-3.0/
 [90]: http://unlicense.org/
 [100]: http://choosealicense.com/licenses/no-license/
+[200]: https://creativecommons.org/licenses/
+[201]: https://github.com/ek9/generator-license-cc
