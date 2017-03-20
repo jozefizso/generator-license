@@ -108,13 +108,15 @@ module.exports = class GeneratorLicense extends Generator {
       }
     ];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then(answers => {
+      this.config.set(answers);
+
       this.props = Object.assign({
         name: this.options.name,
         email: this.options.email,
         website: this.options.website,
         license: this.options.license
-      }, props);
+      }, answers);
     });
   }
 
