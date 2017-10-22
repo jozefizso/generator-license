@@ -3,17 +3,17 @@ const Generator = require('yeoman-generator');
 const gitConfig = require('git-config');
 
 const licenses = [
-  {name: 'Apache 2.0', value: 'Apache-2.0'},
-  {name: 'MIT', value: 'MIT'},
-  {name: 'Mozilla Public License 2.0', value: 'MPL-2.0'},
-  {name: 'BSD 2-Clause (FreeBSD) License', value: 'BSD-2-Clause-FreeBSD'},
-  {name: 'BSD 3-Clause (NewBSD) License', value: 'BSD-3-Clause'},
-  {name: 'Internet Systems Consortium (ISC) License', value: 'ISC'},
-  {name: 'GNU AGPL 3.0', value: 'AGPL-3.0'},
-  {name: 'GNU GPL 3.0', value: 'GPL-3.0'},
-  {name: 'GNU LGPL 3.0', value: 'LGPL-3.0'},
-  {name: 'Unlicense', value: 'unlicense'},
-  {name: 'No License (Copyrighted)', value: 'nolicense'}
+  { name: 'Apache 2.0', value: 'Apache-2.0' },
+  { name: 'MIT', value: 'MIT' },
+  { name: 'Mozilla Public License 2.0', value: 'MPL-2.0' },
+  { name: 'BSD 2-Clause (FreeBSD) License', value: 'BSD-2-Clause-FreeBSD' },
+  { name: 'BSD 3-Clause (NewBSD) License', value: 'BSD-3-Clause' },
+  { name: 'Internet Systems Consortium (ISC) License', value: 'ISC' },
+  { name: 'GNU AGPL 3.0', value: 'AGPL-3.0' },
+  { name: 'GNU GPL 3.0', value: 'GPL-3.0' },
+  { name: 'GNU LGPL 3.0', value: 'LGPL-3.0' },
+  { name: 'Unlicense', value: 'unlicense' },
+  { name: 'No License (Copyrighted)', value: 'nolicense' }
 ];
 
 module.exports = class GeneratorLicense extends Generator {
@@ -42,7 +42,7 @@ module.exports = class GeneratorLicense extends Generator {
       type: String,
       desc: 'Year(s) to include on the license',
       required: false,
-      defaults: (new Date()).getFullYear()
+      defaults: new Date().getFullYear()
     });
 
     this.option('licensePrompt', {
@@ -61,7 +61,8 @@ module.exports = class GeneratorLicense extends Generator {
 
     this.option('license', {
       type: String,
-      desc: 'Select a license, so no license prompt will happen, in case you want to handle it outside of this generator',
+      desc:
+        'Select a license, so no license prompt will happen, in case you want to handle it outside of this generator',
       required: false
     });
 
@@ -82,7 +83,7 @@ module.exports = class GeneratorLicense extends Generator {
     const prompts = [
       {
         name: 'name',
-        message: 'What\'s your name:',
+        message: "What's your name:",
         default: this.options.name || this.gitc.user.name,
         when: this.options.name === null || this.options.name === undefined
       },
@@ -103,23 +104,28 @@ module.exports = class GeneratorLicense extends Generator {
         name: 'license',
         message: this.options.licensePrompt,
         default: this.options.defaultLicense,
-        when: !this.options.license || licenses.find(x => x.value === this.options.license) === undefined,
+        when:
+          !this.options.license ||
+          licenses.find(x => x.value === this.options.license) === undefined,
         choices: licenses
       }
     ];
 
     return this.prompt(prompts).then(props => {
-      this.props = Object.assign({
-        name: this.options.name,
-        email: this.options.email,
-        website: this.options.website,
-        license: this.options.license
-      }, props);
+      this.props = Object.assign(
+        {
+          name: this.options.name,
+          email: this.options.email,
+          website: this.options.website,
+          license: this.options.license
+        },
+        props
+      );
     });
   }
 
   writing() {
-    // license file
+    // License file
     const filename = this.props.license + '.txt';
     let author = this.props.name.trim();
     if (this.props.email) {
@@ -138,7 +144,7 @@ module.exports = class GeneratorLicense extends Generator {
       }
     );
 
-    // package
+    // Package
     if (!this.fs.exists(this.destinationPath('package.json'))) {
       return;
     }
