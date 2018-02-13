@@ -57,7 +57,7 @@ describe('license:app', function() {
       });
   });
 
-  it('makes npm module private when license selected is nolicense', function() {
+  it('makes npm module private when license selected is UNLICENSED', function() {
     return helpers
       .run(require.resolve('../app'))
       .inTmpDir(function(dir) {
@@ -69,7 +69,7 @@ describe('license:app', function() {
         email: 'foo@example.com',
         website: 'http://example.com',
         licensePrompt: 'Choose a license',
-        license: 'nolicense'
+        license: 'UNLICENSED'
       })
       .then(function() {
         assert.noFileContent('package.json', '"license"');
