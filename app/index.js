@@ -72,6 +72,12 @@ module.exports = class GeneratorLicense extends Generator {
       required: false,
       defaults: 'LICENSE'
     });
+
+    this.option('publish', {
+      type: Boolean,
+      desc: 'Publish the package',
+      required: false
+    });
   }
 
   initializing() {
@@ -152,9 +158,10 @@ module.exports = class GeneratorLicense extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     pkg.license = this.props.license;
 
-    // We don't want users to publish their module to NPM if they copyrighted
-    // their content.
-    if (this.props.license === 'UNLICENSED') {
+    if (
+      (this.options.publish === undefined && this.props.license === 'UNLICENSED') ||
+      this.options.publish === false
+    ) {
       delete pkg.license;
       pkg.private = true;
     }
