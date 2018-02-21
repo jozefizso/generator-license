@@ -262,11 +262,11 @@ describe('license:app - generate copyrighted license', function() {
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'nolicense'
+        license: 'UNLICENSED'
       });
   });
 
-  it('creates LICENSE file using nolicense template', function() {
+  it('creates LICENSE file using UNLICENSED template', function() {
     assert.fileContent(
       'LICENSE',
       'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
