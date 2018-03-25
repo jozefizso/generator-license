@@ -91,13 +91,13 @@ module.exports = class GeneratorLicense extends Generator {
         name: 'email',
         message: 'Your email (optional):',
         default: this.options.email || this.gitc.user.email,
-        when: !this.options.email
+        when: this.options.email === null || this.options.email === undefined || this.options.email === ""
       },
       {
         name: 'website',
         message: 'Your website (optional):',
         default: this.options.website,
-        when: !this.options.website
+        when: this.options.website === null || this.options.website === undefined || this.options.website === ""
       },
       {
         type: 'list',
@@ -128,10 +128,10 @@ module.exports = class GeneratorLicense extends Generator {
     // License file
     const filename = this.props.license + '.txt';
     let author = this.props.name.trim();
-    if (this.props.email) {
+    if (this.props.email && this.props.email.trim()) {
       author += ' <' + this.props.email.trim() + '>';
     }
-    if (this.props.website) {
+    if (this.props.website && this.props.website.trim()) {
       author += ' (' + this.props.website.trim() + ')';
     }
 
