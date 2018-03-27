@@ -1,6 +1,5 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const gitConfig = require('git-config');
 
 const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
@@ -75,8 +74,12 @@ module.exports = class GeneratorLicense extends Generator {
   }
 
   initializing() {
-    this.gitc = gitConfig.sync();
-    this.gitc.user = this.gitc.user || {};
+    this.gitc = {
+      user: {
+        name: this.user.git.name(),
+        email: this.user.git.email()
+      }
+    };
   }
 
   prompting() {

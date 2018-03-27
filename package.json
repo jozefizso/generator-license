@@ -37,7 +37,6 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "git-config": "^0.0.7",
     "yeoman-generator": "^2.0.1"
   },
   "eslintConfig": {
