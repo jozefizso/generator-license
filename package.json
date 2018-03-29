@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "5.3.0",
+  "version": "5.4.0",
   "description": "License generator for Yeoman based projects.",
   "homepage": "https://github.com/jozefizso/generator-license",
   "author": {
