@@ -19,7 +19,6 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "lint-staged": "^7.0.0",
-    "nsp": "^3.2.1",
     "prettier": "^1.7.0",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
@@ -31,7 +30,7 @@
   },
   "scripts": {
     "test": "jest && eslint **/*.js",
-    "prepublish": "nsp check",
+    "prepublish": "npm audit --audit-level=high",
     "pretest": "eslint .",
     "precommit": "lint-staged"
   },
