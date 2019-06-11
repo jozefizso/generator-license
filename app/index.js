@@ -140,6 +140,7 @@ module.exports = class GeneratorLicense extends Generator {
     if (this.props.email) {
       author += ' <' + this.props.email.trim() + '>';
     }
+
     if (this.props.website) {
       author += ' (' + this.props.website.trim() + ')';
     }

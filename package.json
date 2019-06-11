@@ -7,20 +7,27 @@
     "name": "Jozef Izso",
     "url": "https://github.com/jozefizso"
   },
-  "files": ["app"],
+  "files": [
+    "app"
+  ],
   "main": "app/index.js",
-  "keywords": ["yeoman-generator", "yeoman", "generator", "license"],
+  "keywords": [
+    "yeoman-generator",
+    "yeoman",
+    "generator",
+    "license"
+  ],
   "devDependencies": {
     "coveralls": "^3.0.4",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^2.4.0",
-    "eslint-config-xo": "^0.20.1",
-    "eslint-plugin-prettier": "^2.2.0",
-    "husky": "^0.14.3",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.4.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.2.0",
-    "prettier": "^1.7.0",
-    "yeoman-assert": "^3.0.0",
+    "prettier": "^1.18.2",
+    "yeoman-assert": "^3.1.1",
     "yeoman-test": "^2.0.0"
   },
   "bugs": "https://github.com/jozefizso/generator-license/issues",
@@ -30,7 +37,7 @@
   },
   "scripts": {
     "test": "jest && eslint **/*.js",
-    "prepublish": "npm audit --audit-level=high",
+    "prepublishOnly": "npm audit --audit-level=high",
     "pretest": "eslint .",
     "precommit": "lint-staged"
   },
@@ -38,7 +45,10 @@
     "yeoman-generator": "^4.0.1"
   },
   "eslintConfig": {
-    "extends": ["xo", "prettier"],
+    "extends": [
+      "xo",
+      "prettier"
+    ],
     "env": {
       "jest": true,
       "node": true
@@ -52,14 +62,22 @@
         }
       ]
     },
-    "plugins": ["prettier"]
+    "plugins": [
+      "prettier"
+    ]
   },
   "license": "MIT",
   "jest": {
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
-    "*.json": ["prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
