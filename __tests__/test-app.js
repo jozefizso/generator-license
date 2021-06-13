@@ -1,10 +1,10 @@
 'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
 
-describe('license:app', function() {
-  it('does not create new package.json', function() {
+describe('license:app', () => {
+  it('does not create new package.json', () => {
     return helpers
       .run(require.resolve('../app'))
       .withPrompts({
@@ -13,18 +13,18 @@ describe('license:app', function() {
         website: 'http://example.com',
         license: 'MIT'
       })
-      .then(function() {
+      .then(() => {
         assert.file('LICENSE');
         assert.noFile('package.json');
       });
   });
 
-  it('edit pre-existing package.json', function() {
+  it('edit pre-existing package.json', () => {
     return helpers
       .run(require.resolve('../app'))
-      .inTmpDir(function(dir) {
-        var done = this.async();
-        var fs = require('fs');
+      .inTmpDir(function (dir) {
+        const done = this.async();
+        const fs = require('fs');
         fs.writeFile(path.join(dir, 'package.json'), '{}', done);
       })
       .withPrompts({
@@ -33,13 +33,13 @@ describe('license:app', function() {
         website: 'http://example.com',
         license: 'MIT'
       })
-      .then(function() {
+      .then(() => {
         assert.file('LICENSE');
         assert.fileContent('package.json', '"license": "MIT"');
       });
   });
 
-  it('with author options: --name --email --website', function() {
+  it('with author options: --name --email --website', () => {
     return helpers
       .run(require.resolve('../app'))
       .withPrompts({
@@ -50,18 +50,18 @@ describe('license:app', function() {
         email: 'foo@example.com',
         website: 'http://example.com'
       })
-      .then(function() {
+      .then(() => {
         assert.fileContent('LICENSE', 'ISC');
         assert.fileContent('LICENSE', 'Rick <foo@example.com> (http://example.com)');
         assert.noFile('package.json');
       });
   });
 
-  it('makes npm module private when license selected is UNLICENSED', function() {
+  it('makes npm module private when license selected is UNLICENSED', () => {
     return helpers
       .run(require.resolve('../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withPrompts({
@@ -71,13 +71,13 @@ describe('license:app', function() {
         licensePrompt: 'Choose a license',
         license: 'UNLICENSED'
       })
-      .then(function() {
+      .then(() => {
         assert.noFileContent('package.json', '"license"');
         assert.fileContent('package.json', '"private": true');
       });
   });
 
-  it('--output change the destination directory', function() {
+  it('--output change the destination directory', () => {
     return helpers
       .run(path.join(__dirname, '../app'))
       .withOptions({
@@ -90,7 +90,7 @@ describe('license:app', function() {
         website: 'http://example.com',
         license: 'GPL-3.0'
       })
-      .then(function() {
+      .then(() => {
         assert.file('src/license.txt');
         assert.noFile('LICENSE');
       });
