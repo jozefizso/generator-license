@@ -57,11 +57,13 @@
       "node": true
     },
     "rules": {
+      "object-shorthand": ["error", "consistent"],
       "prettier/prettier": [
         "error",
         {
           "singleQuote": true,
-          "printWidth": 90
+          "printWidth": 90,
+          "trailingComma": "none"
         }
       ]
     },
