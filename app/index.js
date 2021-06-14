@@ -60,8 +60,7 @@ module.exports = class GeneratorLicense extends Generator {
 
     this.option('license', {
       type: String,
-      desc:
-        'Select a license, so no license prompt will happen, in case you want to handle it outside of this generator',
+      desc: 'Select a license, so no license prompt will happen, in case you want to handle it outside of this generator',
       required: false
     });
 
@@ -115,21 +114,19 @@ module.exports = class GeneratorLicense extends Generator {
         default: this.options.defaultLicense,
         when:
           !this.options.license ||
-          licenses.find(x => x.value === this.options.license) === undefined,
+          licenses.find((x) => x.value === this.options.license) === undefined,
         choices: licenses
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      this.props = Object.assign(
-        {
-          name: this.options.name,
-          email: this.options.email,
-          website: this.options.website,
-          license: this.options.license
-        },
-        props
-      );
+    return this.prompt(prompts).then((props) => {
+      this.props = {
+        name: this.options.name,
+        email: this.options.email,
+        website: this.options.website,
+        license: this.options.license,
+        ...props
+      };
     });
   }
 

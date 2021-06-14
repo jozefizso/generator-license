@@ -1,14 +1,14 @@
 'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
 
-describe('license:app - generate Apache 2.0 license', function() {
-  beforeEach(function() {
+describe('license:app - generate Apache 2.0 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -23,22 +23,19 @@ describe('license:app - generate Apache 2.0 license', function() {
       });
   });
 
-  it('creates LICENSE file using Apache 2.0 template', function() {
+  it('creates LICENSE file using Apache 2.0 template', () => {
     assert.fileContent('LICENSE', 'Apache License, Version 2.0');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "Apache-2.0"');
   });
 });
 
-describe('license:app - generate Apache 2.0 license with 2013-2015 year', function() {
-  beforeEach(function() {
+describe('license:app - generate Apache 2.0 license with 2013-2015 year', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -53,22 +50,19 @@ describe('license:app - generate Apache 2.0 license with 2013-2015 year', functi
       });
   });
 
-  it('creates LICENSE file using Apache 2.0 template', function() {
+  it('creates LICENSE file using Apache 2.0 template', () => {
     assert.fileContent('LICENSE', 'Apache License, Version 2.0');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright 2013-2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright 2013-2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "Apache-2.0"');
   });
 });
 
-describe('license:app - generate BSD 2 license', function() {
-  beforeEach(function() {
+describe('license:app - generate BSD 2 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -83,22 +77,19 @@ describe('license:app - generate BSD 2 license', function() {
       });
   });
 
-  it('creates LICENSE file using BSD 2 template', function() {
+  it('creates LICENSE file using BSD 2 template', () => {
     assert.fileContent('LICENSE', 'FreeBSD Project');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "BSD-2-Clause-FreeBSD"');
   });
 });
 
-describe('license:app - generate BSD 3 license', function() {
-  beforeEach(function() {
+describe('license:app - generate BSD 3 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -113,25 +104,19 @@ describe('license:app - generate BSD 3 license', function() {
       });
   });
 
-  it('creates LICENSE file using BSD 3 template', function() {
-    assert.fileContent(
-      'LICENSE',
-      'THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"'
-    );
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+  it('creates LICENSE file using BSD 3 template', () => {
+    assert.fileContent('LICENSE', 'THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"');
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "BSD-3-Clause"');
   });
 });
 
-describe('license:app - generate ISC license', function() {
-  beforeEach(function() {
+describe('license:app - generate ISC license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -146,22 +131,19 @@ describe('license:app - generate ISC license', function() {
       });
   });
 
-  it('creates LICENSE file using ISC template', function() {
+  it('creates LICENSE file using ISC template', () => {
     assert.fileContent('LICENSE', 'THE SOFTWARE IS PROVIDED "AS IS"');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "ISC"');
   });
 });
 
-describe('license:app - generate GNU AGPL 3.0 license', function() {
-  beforeEach(function() {
+describe('license:app - generate GNU AGPL 3.0 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -176,22 +158,19 @@ describe('license:app - generate GNU AGPL 3.0 license', function() {
       });
   });
 
-  it('creates LICENSE file using AGPL-3.0 template', function() {
+  it('creates LICENSE file using AGPL-3.0 template', () => {
     assert.fileContent('LICENSE', 'GNU AFFERO GENERAL PUBLIC LICENSE');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "AGPL-3.0"');
   });
 });
 
-describe('license:app - generate MIT license', function() {
-  beforeEach(function() {
+describe('license:app - generate MIT license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -206,22 +185,19 @@ describe('license:app - generate MIT license', function() {
       });
   });
 
-  it('creates LICENSE file using MIT template', function() {
+  it('creates LICENSE file using MIT template', () => {
     assert.fileContent('LICENSE', 'The MIT License (MIT)');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "MIT"');
   });
 });
 
-describe('license:app - generate MPL 2.0 license', function() {
-  beforeEach(function() {
+describe('license:app - generate MPL 2.0 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -236,22 +212,19 @@ describe('license:app - generate MPL 2.0 license', function() {
       });
   });
 
-  it('creates LICENSE file using MPL 2.0 template', function() {
+  it('creates LICENSE file using MPL 2.0 template', () => {
     assert.fileContent('LICENSE', 'Mozilla Public License Version 2.0');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "MPL-2.0"');
   });
 });
 
-describe('license:app - generate copyrighted license', function() {
-  beforeEach(function() {
+describe('license:app - generate copyrighted license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -266,22 +239,19 @@ describe('license:app - generate copyrighted license', function() {
       });
   });
 
-  it('creates LICENSE file using UNLICENSED template', function() {
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+  it('creates LICENSE file using UNLICENSED template', () => {
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.noFileContent('package.json', '"license"');
     assert.fileContent('package.json', '"private": true');
   });
 });
 
-describe('license:app - generate unlicense license', function() {
-  beforeEach(function() {
+describe('license:app - generate unlicense license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -296,21 +266,18 @@ describe('license:app - generate unlicense license', function() {
       });
   });
 
-  it('creates LICENSE file using unlicense template', function() {
-    assert.fileContent(
-      'LICENSE',
-      'This is free and unencumbered software released into the public domain.'
-    );
+  it('creates LICENSE file using unlicense template', () => {
+    assert.fileContent('LICENSE', 'This is free and unencumbered software released into the public domain.');
     assert.fileContent('package.json', '"license": "unlicense"');
   });
 });
 
-describe('license:app - generate GPL-3.0 license', function() {
-  beforeEach(function() {
+describe('license:app - generate GPL-3.0 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -325,22 +292,19 @@ describe('license:app - generate GPL-3.0 license', function() {
       });
   });
 
-  it('creates LICENSE file using GPL-3.0 template', function() {
+  it('creates LICENSE file using GPL-3.0 template', () => {
     assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });
 
-describe('license:app - generate LGPL-3.0 license', function() {
-  beforeEach(function() {
+describe('license:app - generate LGPL-3.0 license', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -355,26 +319,23 @@ describe('license:app - generate LGPL-3.0 license', function() {
       });
   });
 
-  it('creates LICENSE file using LGPL-3.0 template and also contains GPL-3.0', function() {
+  it('creates LICENSE file using LGPL-3.0 template and also contains GPL-3.0', () => {
     // Both licenses must be included when using LGPL
     // the test below is intended to check for both licenses as both are
     // included in the file
     assert.fileContent('LICENSE', 'GNU LESSER GENERAL PUBLIC LICENSE');
     assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "LGPL-3.0"');
   });
 });
 
-describe('license:app - generate GPL-3.0 license via option', function() {
-  beforeEach(function() {
+describe('license:app - generate GPL-3.0 license via option', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -389,22 +350,19 @@ describe('license:app - generate GPL-3.0 license via option', function() {
       });
   });
 
-  it('creates LICENSE file using GPL-3.0 template', function() {
+  it('creates LICENSE file using GPL-3.0 template', () => {
     assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });
 
-describe('license:app - generate GPL-3.0 license invalid option', function() {
-  beforeEach(function() {
+describe('license:app - generate GPL-3.0 license invalid option', () => {
+  beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
-      .inTmpDir(function(dir) {
-        var fs = require('fs');
+      .inTmpDir((dir) => {
+        const fs = require('fs');
         fs.writeFileSync(path.join(dir, 'package.json'), '{}');
       })
       .withOptions({
@@ -420,12 +378,9 @@ describe('license:app - generate GPL-3.0 license invalid option', function() {
       });
   });
 
-  it('creates LICENSE file using GPL-3.0 template', function() {
+  it('creates LICENSE file using GPL-3.0 template', () => {
     assert.fileContent('LICENSE', 'GNU GENERAL PUBLIC LICENSE');
-    assert.fileContent(
-      'LICENSE',
-      'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)'
-    );
+    assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
     assert.fileContent('package.json', '"license": "GPL-3.0"');
   });
 });

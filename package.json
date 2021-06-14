@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "License generator for Yeoman based projects.",
   "homepage": "https://github.com/jozefizso/generator-license",
   "author": {
@@ -18,31 +18,34 @@
     "license"
   ],
   "devDependencies": {
-    "coveralls": "^3.0.4",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-config-xo": "^0.26.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^2.4.0",
-    "jest": "^25.1.0",
-    "lint-staged": "^8.2.0",
-    "prettier": "^1.18.2",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-xo": "^0.36.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "jest": "^27.0.4",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^2.0.0"
+    "yeoman-test": "^2.7.0"
   },
   "bugs": "https://github.com/jozefizso/generator-license/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/jozefizso/generator-license.git"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
-    "test": "jest && eslint **/*.js",
+    "test": "jest",
     "prepublishOnly": "npm audit --audit-level=high",
     "pretest": "eslint .",
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "yeoman-generator": "^4.0.1"
+    "yeoman-generator": "^4.13.0"
   },
   "eslintConfig": {
     "extends": [
@@ -54,11 +57,13 @@
       "node": true
     },
     "rules": {
+      "object-shorthand": ["error", "consistent"],
       "prettier/prettier": [
         "error",
         {
           "singleQuote": true,
-          "printWidth": 90
+          "printWidth": 90,
+          "trailingComma": "none"
         }
       ]
     },
