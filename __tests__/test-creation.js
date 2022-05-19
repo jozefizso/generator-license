@@ -241,7 +241,6 @@ describe('license:app - generate copyrighted license', () => {
 
   it('creates LICENSE file using UNLICENSED template', () => {
     assert.fileContent('LICENSE', 'Copyright (c) 2015 Rick <foo@example.com> (http://example.com)');
-    assert.noFileContent('package.json', '"license"');
     assert.fileContent('package.json', '"private": true');
   });
 });

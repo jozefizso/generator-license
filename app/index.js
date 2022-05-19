@@ -163,7 +163,6 @@ module.exports = class GeneratorLicense extends Generator {
       (this.options.publish === undefined && this.props.license === 'UNLICENSED') ||
       this.options.publish === false
     ) {
-      delete pkg.license;
       pkg.private = true;
     }
 
