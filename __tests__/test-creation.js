@@ -246,7 +246,7 @@ describe('license:app - generate copyrighted license', () => {
   });
 });
 
-describe('license:app - generate unlicense license', () => {
+describe('license:app - generate Unlicense license', () => {
   beforeEach(() => {
     return helpers
       .run(path.join(__dirname, '../app'))
@@ -262,13 +262,13 @@ describe('license:app - generate unlicense license', () => {
         name: 'Rick',
         email: 'foo@example.com',
         website: 'http://example.com',
-        license: 'unlicense'
+        license: 'Unlicense'
       });
   });
 
-  it('creates LICENSE file using unlicense template', () => {
+  it('creates LICENSE file using Unlicense template', () => {
     assert.fileContent('LICENSE', 'This is free and unencumbered software released into the public domain.');
-    assert.fileContent('package.json', '"license": "unlicense"');
+    assert.fileContent('package.json', '"license": "Unlicense"');
   });
 });
 
