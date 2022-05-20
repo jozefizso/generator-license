@@ -72,6 +72,7 @@ describe('license:app', () => {
         license: 'UNLICENSED'
       })
       .then(() => {
+        assert.fileContent('package.json', '"license": "UNLICENSED"');
         assert.fileContent('package.json', '"private": true');
       });
   });
