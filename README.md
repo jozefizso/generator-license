@@ -56,7 +56,7 @@ All the options are optional; the generator will prompt for answers when informa
 - [GNU AGPL 3.0 License][70]
 - [GNU GPL 3.0 License][80]
 - [Unlicense][90]
-- [No License][100]
+- UNLICENSED
 
 For [Creative Commons Licenses][200] (useful for media files, documentation and
 other creative works) you can use [generator-license-cc][201].
