@@ -1,10 +1,8 @@
 # generator-license
 
-[![Build Status](https://img.shields.io/travis/jozefizso/generator-license.svg)](https://travis-ci.org/jozefizso/generator-license)
+[![Build Status](https://img.shields.io/travis/jozefizso/generator-license.svg)](https://app.travis-ci.com/github/jozefizso/generator-license)
 [![NPM version](https://img.shields.io/npm/v/generator-license.svg)](https://www.npmjs.org/package/generator-license)
 [![Coverage Status](https://coveralls.io/repos/github/jozefizso/generator-license/badge.svg)](https://coveralls.io/github/jozefizso/generator-license)
-[![David Dependencies](https://img.shields.io/david/jozefizso/generator-license.svg)](https://david-dm.org/jozefizso/generator-license)
-[![David Dev Dependencies](https://img.shields.io/david/dev/jozefizso/generator-license.svg)](https://david-dm.org/jozefizso/generator-license#info=devDependencies)
 
 > Generate LICENSE file for your project using Yeoman.
 
