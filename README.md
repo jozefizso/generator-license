@@ -1,6 +1,6 @@
 # generator-license
 
-[![Build Status](https://img.shields.io/travis/jozefizso/generator-license.svg)](https://app.travis-ci.com/github/jozefizso/generator-license)
+[![build](https://github.com/jozefizso/generator-license/actions/workflows/build.yml/badge.svg)](https://github.com/jozefizso/generator-license/actions/workflows/build.yml)
 [![NPM version](https://img.shields.io/npm/v/generator-license.svg)](https://www.npmjs.org/package/generator-license)
 [![Coverage Status](https://coveralls.io/repos/github/jozefizso/generator-license/badge.svg)](https://coveralls.io/github/jozefizso/generator-license)
 

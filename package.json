@@ -39,7 +39,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "prepublishOnly": "npm audit --audit-level=high",
     "pretest": "eslint .",
     "precommit": "lint-staged"
