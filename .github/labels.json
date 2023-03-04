@@ -1,0 +1,17 @@
+[
+  { "name": "bug", "color": "#ee0701" },
+  { "name": "security", "color": "#ee0701" },
+
+  { "name": "enhancement", "color": "#84b6eb" },
+  { "name": "feature", "color": "#91ca55" },
+  { "name": "chore", "color": "#fef2c0" },
+  { "name": "test", "color": "#bfe5bf" },
+
+  { "name": "build", "color": "#bcf5db" },
+  { "name": "maintanance", "color": "#bcf5db" },
+
+  { "name": "wontfix", "color": "#eeeeee" },
+  { "name": "duplicate", "color": "#eeeeee" },
+
+  { "name": "discussion", "color": "#cc317c" }
+]
