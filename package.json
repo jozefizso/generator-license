@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "5.5.0",
+  "version": "6.0.0-preview",
   "description": "License generator for Yeoman based projects.",
   "homepage": "https://github.com/jozefizso/generator-license",
   "author": {
@@ -36,7 +36,7 @@
     "url": "https://github.com/jozefizso/generator-license.git"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "scripts": {
     "test": "jest --coverage",
