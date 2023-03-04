@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-    branches: [ main, build, coveralls ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
