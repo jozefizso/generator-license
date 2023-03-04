@@ -27,6 +27,11 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm test
+      - name: coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coveralls_node_${{ matrix.node }}_r${{ github.run_id }}_${{ github.run_number }}
+          path: coverage
       - name: coveralls
         uses: coverallsapp/github-action@v1
         with:
