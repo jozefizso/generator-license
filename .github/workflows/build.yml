@@ -32,6 +32,9 @@ jobs:
         with:
           name: coveralls_node_${{ matrix.node }}_r${{ github.run_id }}_${{ github.run_number }}
           path: coverage
+      - name: fix lcov.info
+        run: |
+          sed -i -E 's/SF:(\.\.\/\.\.(.+))/SF:\2/' coverage/lcov.info
       - name: coveralls
         uses: coverallsapp/github-action@v1
         with:
