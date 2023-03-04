@@ -1,0 +1,29 @@
+name: build
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ main, build ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16, 18 ]
+    name: Node ${{ matrix.node }} build
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: npm ci
+        run: npm ci
+      - name: npm test
+        run: npm test
