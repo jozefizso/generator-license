@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-    branches: [ main, build ]
+    branches: [ main, build, coveralls ]
   pull_request:
     branches: [ main ]
 
@@ -27,3 +27,27 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm test
+      - name: coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coveralls_node_${{ matrix.node }}_r${{ github.run_id }}_${{ github.run_number }}
+          path: coverage
+      - name: fix lcov.info
+        run: |
+          sed -i -E 's/SF:(\.\.\/\.\.(.+))/SF:\2/' coverage/lcov.info
+      - name: coveralls
+        uses: coverallsapp/github-action@v1
+        with:
+          flag-name: node-${{ matrix.node }}
+          parallel: true
+
+  report:
+    needs: build
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: coveralls report
+      uses: coverallsapp/github-action@v1
+      with:
+        parallel-finished: true
+        carryforward: "node-14,node-16,node-18"
