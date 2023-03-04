@@ -28,7 +28,8 @@
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^2.7.0"
+    "yeoman-environment": "^3.15.1",
+    "yeoman-test": "^6.3.0"
   },
   "bugs": "https://github.com/jozefizso/generator-license/issues",
   "repository": {
@@ -45,7 +46,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "yeoman-generator": "^4.13.0"
+    "yeoman-generator": "^5.8.0"
   },
   "eslintConfig": {
     "extends": [
@@ -57,7 +58,10 @@
       "node": true
     },
     "rules": {
-      "object-shorthand": ["error", "consistent"],
+      "object-shorthand": [
+        "error",
+        "consistent"
+      ],
       "prettier/prettier": [
         "error",
         {
