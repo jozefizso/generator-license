@@ -1,6 +1,6 @@
 {
   "name": "generator-license",
-  "version": "5.5.0",
+  "version": "5.6.0",
   "description": "Generate LICENSE file for your project using Yeoman.",
   "homepage": "https://github.com/jozefizso/generator-license",
   "author": {
