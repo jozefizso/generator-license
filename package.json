@@ -30,7 +30,7 @@
     "url": "https://github.com/jozefizso/generator-license.git"
   },
   "engines": {
-    "node": ">=16"
+    "node": "^18.18.0 || >=20.17.0"
   },
   "scripts": {
     "test": "jest --coverage",
