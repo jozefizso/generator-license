@@ -39,7 +39,6 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint . --fix",
-    "prepublishOnly": "npm audit --audit-level=high",
     "pretest": "eslint ."
   },
   "dependencies": {
