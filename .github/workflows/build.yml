@@ -17,9 +17,9 @@ jobs:
     name: Node ${{ matrix.node }} build
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: npm ci
@@ -27,7 +27,7 @@ jobs:
       - name: npm test
         run: npm test
       - name: coverage artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coveralls_node_${{ matrix.node }}_r${{ github.run_id }}_${{ github.run_number }}
           path: coverage
@@ -35,7 +35,7 @@ jobs:
         run: |
           sed -i -E 's/SF:(\.\.\/\.\.(.+))/SF:\2/' coverage/lcov.info
       - name: coveralls
-        uses: coverallsapp/github-action@v1
+        uses: coverallsapp/github-action@v2
         with:
           flag-name: node-${{ matrix.node }}
           parallel: true
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: coveralls report
-      uses: coverallsapp/github-action@v1
+      uses: coverallsapp/github-action@v2
       with:
         parallel-finished: true
         carryforward: "node-16,node-18,node-20"
