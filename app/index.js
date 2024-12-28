@@ -1,5 +1,5 @@
-'use strict';
-const Generator = require('yeoman-generator');
+'use strict'
+const Generator = require('yeoman-generator')
 
 const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
@@ -13,36 +13,36 @@ const licenses = [
   { name: 'GNU LGPL 3.0', value: 'LGPL-3.0' },
   { name: 'Unlicense', value: 'Unlicense' },
   { name: 'No License (Copyrighted)', value: 'UNLICENSED' }
-];
+]
 
 module.exports = class GeneratorLicense extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
+  constructor (args, opts) {
+    super(args, opts)
 
     this.option('name', {
       type: String,
       desc: 'Name of the license owner',
       required: false
-    });
+    })
 
     this.option('email', {
       type: String,
       desc: 'Email of the license owner',
       required: false
-    });
+    })
 
     this.option('website', {
       type: String,
       desc: 'Website of the license owner',
       required: false
-    });
+    })
 
     this.option('year', {
       type: String,
       desc: 'Year(s) to include on the license',
       required: false,
       defaults: new Date().getFullYear()
-    });
+    })
 
     this.option('licensePrompt', {
       type: String,
@@ -50,44 +50,44 @@ module.exports = class GeneratorLicense extends Generator {
       defaults: 'Which license do you want to use?',
       hide: true,
       required: false
-    });
+    })
 
     this.option('defaultLicense', {
       type: String,
       desc: 'Default license',
       required: false
-    });
+    })
 
     this.option('license', {
       type: String,
       desc: 'Select a license, so no license prompt will happen, in case you want to handle it outside of this generator',
       required: false
-    });
+    })
 
     this.option('output', {
       type: String,
       desc: 'Set the output file for the generated license',
       required: false,
       defaults: 'LICENSE'
-    });
+    })
 
     this.option('publish', {
       type: Boolean,
       desc: 'Publish the package',
       required: false
-    });
+    })
   }
 
-  initializing() {
+  initializing () {
     this.gitc = {
       user: {
         name: this.user.git.name(),
         email: this.user.git.email()
       }
-    };
+    }
   }
 
-  prompting() {
+  prompting () {
     const prompts = [
       {
         name: 'name',
@@ -117,7 +117,7 @@ module.exports = class GeneratorLicense extends Generator {
           licenses.find((x) => x.value === this.options.license) === undefined,
         choices: licenses
       }
-    ];
+    ]
 
     return this.prompt(prompts).then((props) => {
       this.props = {
@@ -126,20 +126,20 @@ module.exports = class GeneratorLicense extends Generator {
         website: this.options.website,
         license: this.options.license,
         ...props
-      };
-    });
+      }
+    })
   }
 
-  writing() {
+  writing () {
     // License file
-    const filename = this.props.license + '.txt';
-    let author = this.props.name.trim();
+    const filename = this.props.license + '.txt'
+    let author = this.props.name.trim()
     if (this.props.email) {
-      author += ' <' + this.props.email.trim() + '>';
+      author += ' <' + this.props.email.trim() + '>'
     }
 
     if (this.props.website) {
-      author += ' (' + this.props.website.trim() + ')';
+      author += ' (' + this.props.website.trim() + ')'
     }
 
     this.fs.copyTpl(
@@ -147,27 +147,27 @@ module.exports = class GeneratorLicense extends Generator {
       this.destinationPath(this.options.output),
       {
         year: this.options.year,
-        author: author
+        author
       }
-    );
+    )
 
     // Package
     if (!this.fs.exists(this.destinationPath('package.json'))) {
-      return;
+      return
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    pkg.license = this.props.license;
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {})
+    pkg.license = this.props.license
 
     if (
       (this.options.publish === undefined && this.props.license === 'UNLICENSED') ||
       this.options.publish === false
     ) {
-      pkg.private = true;
+      pkg.private = true
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
-};
+}
 
-module.exports.licenses = licenses;
+module.exports.licenses = licenses
