@@ -1,7 +1,6 @@
-'use strict'
-const Generator = require('yeoman-generator')
+import Generator from 'yeoman-generator'
 
-const licenses = [
+export const licenses = [
   { name: 'Apache 2.0', value: 'Apache-2.0' },
   { name: 'MIT', value: 'MIT' },
   { name: 'Mozilla Public License 2.0', value: 'MPL-2.0' },
@@ -15,7 +14,7 @@ const licenses = [
   { name: 'No License (Copyrighted)', value: 'UNLICENSED' }
 ]
 
-module.exports = class GeneratorLicense extends Generator {
+export default class GeneratorLicense extends Generator {
   constructor (args, opts) {
     super(args, opts)
 
@@ -41,13 +40,13 @@ module.exports = class GeneratorLicense extends Generator {
       type: String,
       desc: 'Year(s) to include on the license',
       required: false,
-      defaults: new Date().getFullYear()
+      default: new Date().getFullYear()
     })
 
     this.option('licensePrompt', {
       type: String,
       desc: 'License prompt text',
-      defaults: 'Which license do you want to use?',
+      default: 'Which license do you want to use?',
       hide: true,
       required: false
     })
@@ -68,7 +67,7 @@ module.exports = class GeneratorLicense extends Generator {
       type: String,
       desc: 'Set the output file for the generated license',
       required: false,
-      defaults: 'LICENSE'
+      default: 'LICENSE'
     })
 
     this.option('publish', {
@@ -78,16 +77,16 @@ module.exports = class GeneratorLicense extends Generator {
     })
   }
 
-  initializing () {
+  async initializing () {
     this.gitc = {
       user: {
-        name: this.user.git.name(),
-        email: this.user.git.email()
+        name: await this.git.name(),
+        email: await this.git.email()
       }
     }
   }
 
-  prompting () {
+  async prompting () {
     const prompts = [
       {
         name: 'name',
@@ -119,18 +118,17 @@ module.exports = class GeneratorLicense extends Generator {
       }
     ]
 
-    return this.prompt(prompts).then((props) => {
-      this.props = {
-        name: this.options.name,
-        email: this.options.email,
-        website: this.options.website,
-        license: this.options.license,
-        ...props
-      }
-    })
+    const props = await this.prompt(prompts)
+    this.props = {
+      name: this.options.name,
+      email: this.options.email,
+      website: this.options.website,
+      license: this.options.license,
+      ...props
+    }
   }
 
-  writing () {
+  async writing () {
     // License file
     const filename = this.props.license + '.txt'
     let author = this.props.name.trim()
@@ -142,9 +140,11 @@ module.exports = class GeneratorLicense extends Generator {
       author += ' (' + this.props.website.trim() + ')'
     }
 
-    this.fs.copyTpl(
-      this.templatePath(filename),
-      this.destinationPath(this.options.output),
+    const sourceFile = this.templatePath(filename)
+    const destFile = this.destinationPath(this.options.output)
+    await this.fs.copyTplAsync(
+      sourceFile,
+      destFile,
       {
         year: this.options.year,
         author
@@ -152,11 +152,12 @@ module.exports = class GeneratorLicense extends Generator {
     )
 
     // Package
-    if (!this.fs.exists(this.destinationPath('package.json'))) {
+    const packageFile = this.destinationPath('package.json')
+    if (!this.fs.exists(packageFile)) {
       return
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {})
+    const pkg = this.fs.readJSON(packageFile, {})
     pkg.license = this.props.license
 
     if (
@@ -166,8 +167,6 @@ module.exports = class GeneratorLicense extends Generator {
       pkg.private = true
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+    this.fs.writeJSON(packageFile, pkg)
   }
 }
-
-module.exports.licenses = licenses
