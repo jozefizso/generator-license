@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 16, 18, 20 ]
+        node: [ 18, 20, 22 ]
     name: Node ${{ matrix.node }} build
     steps:
       - name: checkout
@@ -49,4 +49,4 @@ jobs:
       uses: coverallsapp/github-action@v2
       with:
         parallel-finished: true
-        carryforward: "node-16,node-18,node-20"
+        carryforward: "node-18,node-20,node-22"
