@@ -1,6 +1,6 @@
-'use strict'
-const assert = require('yeoman-assert')
-const licensesToTest = require('../app').licenses
+import assert from 'yeoman-assert'
+import { describe, it } from 'vitest'
+import { licenses as licensesToTest } from '../app'
 
 describe('Ensure all valid licenses have templates', () => {
   licensesToTest.forEach((license) => {
