@@ -31,7 +31,7 @@ jobs:
       - name: coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coveralls_node_${{ matrix.node }}_r${{ github.run_id }}_${{ github.run_number }}
+          name: coveralls_node_${{ matrix.node }}_${{ matrix.os }}_r${{ github.run_id }}_${{ github.run_number }}
           path: coverage
       - name: fix lcov.info
         run: |
