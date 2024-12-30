@@ -12,10 +12,11 @@ jobs:
   build:
     runs-on: '${{ matrix.os }}-latest'
     strategy:
+      fail-fast: false
       matrix:
         os: [ ubuntu, macos, windows ]
         node: [ 18, 20, 22 ]
-    name: Node ${{ matrix.node }} build
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
